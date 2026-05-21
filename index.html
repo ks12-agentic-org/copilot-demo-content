@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Copilot Demo Playbook</title>
+<style>
+:root {
+  --bg: #0c0c10; --surface: #13131a; --surface2: #1c1c26;
+  --border: #252535; --accent: #0078d4; --accent-soft: #1a3a5c;
+  --purple: #6264a7; --green: #0e7a0e; --yellow: #c8a000;
+  --text: #e8e8f2; --muted: #7070a0; --dim: #40405a; --white: #fff;
+  font-size: 15px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system,'Segoe UI',system-ui,sans-serif; min-height: 100vh; }
+
+/* TOP BAR */
+.topbar { position:sticky; top:0; z-index:200; background:#0c0c10ee; backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px; padding:12px 20px; flex-wrap:wrap; }
+.topbar-brand { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.brand-pill { background:var(--accent); color:#fff; font-size:11px; font-weight:800; letter-spacing:1.5px;
+  padding:3px 9px; border-radius:5px; text-transform:uppercase; }
+.brand-x { color:var(--dim); font-size:14px; }
+.brand-ms { color:var(--accent); font-size:13px; font-weight:700; }
+.topbar-title { font-size:15px; font-weight:600; color:var(--white); flex:1; }
+.topbar-meta { font-size:11px; color:var(--muted); white-space:nowrap; }
+.chip { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600;
+  padding:3px 10px; border-radius:20px; white-space:nowrap; }
+.chip-blue { background:var(--accent); color:#fff; }
+.chip-green { background:var(--green); color:#fff; }
+
+/* NAV */
+.nav { background:var(--surface); border-bottom:1px solid var(--border);
+  display:flex; gap:0; overflow-x:auto; scrollbar-width:none; padding:0 20px; }
+.nav::-webkit-scrollbar { display:none; }
+.nav-btn { background:none; border:none; border-bottom:2px solid transparent; color:var(--muted);
+  cursor:pointer; font-family:inherit; font-size:13px; font-weight:500;
+  padding:11px 16px; white-space:nowrap; transition:all .15s; }
+.nav-btn:hover { color:var(--text); }
+.nav-btn.on { color:var(--accent); border-bottom-color:var(--accent); }
+
+/* PAGE */
+.page { display:none; padding:24px 20px; max-width:860px; margin:0 auto; }
+.page.on { display:block; }
+
+/* STORY STEP */
+.story-step { display:flex; gap:0; margin-bottom:32px; position:relative; }
+.story-step::before { content:''; position:absolute; left:19px; top:44px; bottom:-16px; width:2px; background:var(--border); pointer-events:none; }
+.story-step:last-child::before { display:none; }
+.step-left { width:40px; flex-shrink:0; }
+.step-dot { width:40px; height:40px; border-radius:50%; background:var(--surface2); border:2px solid var(--border);
+  display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:var(--muted);
+  position:relative; z-index:1; flex-shrink:0; }
+.step-dot.blue { background:var(--accent-soft); border-color:var(--accent); color:var(--accent); }
+.step-body { flex:1; padding-left:16px; padding-top:8px; }
+.step-header { display:flex; align-items:center; gap:10px; margin-bottom:4px; flex-wrap:wrap; }
+.step-title { font-size:16px; font-weight:700; color:var(--white); }
+.step-time { font-size:11px; font-weight:600; color:var(--accent); background:var(--accent-soft); padding:2px 8px; border-radius:20px; }
+.step-desc { font-size:13px; color:var(--muted); margin-bottom:14px; line-height:1.6; }
+
+/* PITCH */
+.pitch { background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--purple);
+  border-radius:0 8px 8px 0; padding:12px 14px; margin-bottom:14px; font-size:13px; color:#c0b0e8; line-height:1.65; }
+
+/* PROMPT CARD */
+.prompt-card { background:var(--surface); border:1px solid var(--border); border-radius:10px; margin-bottom:12px; overflow:hidden; }
+.prompt-card-header { display:flex; align-items:center; justify-content:space-between; padding:8px 14px;
+  background:var(--surface2); border-bottom:1px solid var(--border); }
+.prompt-label-text { font-size:12px; font-weight:600; color:var(--muted); }
+.prompt-text { padding:14px 16px; font-size:14px; line-height:1.8; color:#d0e8ff; white-space:pre-wrap; word-break:break-word; }
+.prompt-foot { display:flex; align-items:center; justify-content:space-between; padding:8px 12px 10px;
+  border-top:1px solid var(--border); gap:10px; }
+.prompt-hint { font-size:11px; color:var(--muted); font-style:italic; flex:1; }
+.copy-btn { background:#0a2a0a; border:1px solid #1a5a1a; color:#60d060; font-size:12px; font-weight:700;
+  padding:6px 14px; border-radius:6px; cursor:pointer; font-family:inherit; transition:all .15s; white-space:nowrap; flex-shrink:0; }
+.copy-btn:hover { background:#0e3a0e; }
+.copy-btn.ok { background:#0e3a0e; color:#fff; border-color:#2a7a2a; }
+
+/* INFO BOXES */
+.info { background:#0a1628; border:1px solid var(--accent-soft); border-radius:8px; padding:11px 14px; font-size:13px; color:#a0c8f0; margin-bottom:14px; }
+.tip  { background:#12082e; border:1px solid #2a1060; border-radius:8px; padding:11px 14px; font-size:13px; color:#c0a0e8; margin-bottom:14px; }
+.warn { background:#1e1000; border:1px solid #4a3000; border-radius:8px; padding:11px 14px; font-size:13px; color:#e0c080; margin-bottom:14px; }
+.success { background:#081a08; border:1px solid #1a5a1a; border-radius:8px; padding:11px 14px; font-size:13px; color:#90d090; margin-bottom:14px; }
+
+.divider { border:none; border-top:1px solid var(--border); margin:28px 0; }
+.section-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--dim); margin:0 0 16px; }
+
+/* TIMELINE */
+.tl { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:24px; table-layout:fixed; word-break:break-word; }
+.tl tr { border-bottom:1px solid var(--border); }
+.tl tr:last-child { border-bottom:none; }
+.tl td { padding:9px 12px; }
+.tl td:first-child { color:var(--accent); font-weight:700; width:110px; }
+
+/* Q&A */
+.qa-item { background:var(--surface); border:1px solid var(--border); border-radius:8px; margin-bottom:8px; overflow:hidden; }
+.qa-q { padding:12px 14px; font-size:14px; font-weight:600; color:#d0b800; cursor:pointer; user-select:none; display:flex; justify-content:space-between; align-items:center; }
+.qa-q::after { content:'+'; color:var(--dim); font-size:18px; font-weight:300; }
+.qa-q.open::after { content:'−'; }
+.qa-a { padding:0 14px 12px; font-size:13px; color:#b0b0d0; line-height:1.7; display:none; }
+.qa-a.on { display:block; }
+
+/* FILE CARDS */
+.file-dl { background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:14px 16px; margin-bottom:12px; display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap; }
+.file-icon { font-size:28px; flex-shrink:0; line-height:1; width:36px; }
+.file-info { flex:1; min-width:200px; }
+.file-info h4 { font-size:14px; font-weight:700; margin-bottom:3px; }
+.file-info .file-meta { font-size:12px; color:var(--muted); margin-bottom:6px; }
+.file-info .file-use { font-size:13px; color:#c0c0e0; margin-bottom:10px; line-height:1.5; }
+.dl-btn { display:inline-block; background:var(--accent); color:#fff; font-size:13px; font-weight:700;
+  padding:8px 18px; border-radius:7px; text-decoration:none; transition:background .15s; }
+.dl-btn:hover { background:#0060b0; }
+
+/* CHANGELOG */
+.cl-entry { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin-bottom:6px; }
+.cl-time { font-size:10px; color:var(--muted); margin-bottom:3px; }
+.cl-text { font-size:12px; color:#c0d0e0; }
+
+/* LOADING */
+#loading { display:flex; align-items:center; justify-content:center; height:80vh; font-size:16px; color:var(--muted); }
+
+@media(max-width:600px) {
+  .story-step { flex-direction:column; gap:8px; margin-bottom:20px; }
+  .story-step::before { display:none; }
+  .step-left { width:auto; }
+  .step-dot { width:32px; height:32px; font-size:12px; }
+  .step-body { padding-left:0 !important; padding-top:0 !important; }
+  .nav-btn { padding:9px 10px; font-size:12px; }
+}
+</style>
+</head>
+<body>
+
+<div id="loading">⏳ Loading demo content...</div>
+<div id="app" style="display:none">
+  <div class="topbar">
+    <div class="topbar-brand">
+      <span class="brand-pill" id="brand-pill">Copilot</span>
+      <span class="brand-x">×</span>
+      <span class="brand-ms">Microsoft</span>
+    </div>
+    <div class="topbar-title" id="topbar-title">Demo Playbook</div>
+    <div class="topbar-meta" id="topbar-meta"></div>
+    <span class="chip chip-blue">M365 Copilot</span>
+    <span class="chip chip-green" id="version-chip"></span>
+  </div>
+  <nav class="nav" id="nav"></nav>
+  <div id="pages"></div>
+</div>
+
+<script>
+let DATA = null;
+let promptCounter = 0;
+
+// ── Load content.json ───────────────────────────────────────────────────────
+async function loadContent() {
+  try {
+    const res = await fetch('content.json?v=' + Date.now());
+    DATA = await res.json();
+    render();
+  } catch(e) {
+    document.getElementById('loading').innerHTML = '❌ Could not load content.json<br><small>' + e.message + '</small>';
+  }
+}
+
+// ── Render all tabs ──────────────────────────────────────────────────────────
+function render() {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+
+  const m = DATA.meta || {};
+  document.title = m.title || 'Copilot Demo Playbook';
+  document.getElementById('topbar-title').textContent = m.title || 'Copilot Demo Playbook';
+  document.getElementById('version-chip').textContent = '✓ v' + (m.version || '');
+
+  const nav = document.getElementById('nav');
+  const pages = document.getElementById('pages');
+
+  DATA.tabs.forEach((tab, i) => {
+    // Nav button
+    const btn = document.createElement('button');
+    btn.className = 'nav-btn' + (i === 0 ? ' on' : '');
+    btn.innerHTML = (tab.icon || '') + ' ' + tab.title + (tab.duration ? ' <span style="font-size:10px;color:var(--muted)">'+tab.duration+'</span>' : '');
+    btn.onclick = () => goTab(tab.id);
+    nav.appendChild(btn);
+
+    // Page
+    const page = document.createElement('div');
+    page.id = 'page-' + tab.id;
+    page.className = 'page' + (i === 0 ? ' on' : '');
+    page.innerHTML = renderTab(tab);
+    pages.appendChild(page);
+  });
+
+  // Add changelog tab
+  addChangelogTab();
+}
+
+function goTab(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('on'));
+  const page = document.getElementById('page-' + id);
+  if (page) page.classList.add('on');
+  const btns = document.querySelectorAll('.nav-btn');
+  btns.forEach(b => { if (b.onclick && b.onclick.toString().includes("'" + id + "'")) b.classList.add('on'); });
+  window.scrollTo(0, 0);
+}
+
+// ── Tab Renderers ────────────────────────────────────────────────────────────
+function renderTab(tab) {
+  if (tab.id === 'overview') return renderRunOfShow(tab);
+  if (tab.id === 'qa') return renderQA(tab);
+  if (tab.id === 'files') return renderFiles(tab);
+  if (tab.type === 'steps' || tab.steps) return renderSteps(tab);
+  return '<p style="color:var(--muted)">No content</p>';
+}
+
+function renderRunOfShow(tab) {
+  let html = '';
+  if (tab.duration_total) {
+    html += `<p class="section-label">${tab.duration_total} Demo Timeline</p>`;
+  } else {
+    html += `<p class="section-label">75-Minute Demo Timeline</p>`;
+  }
+  html += '<table class="tl">';
+  (tab.timeline || []).forEach(row => {
+    html += `<tr><td>${esc(row.time)}</td><td>${esc(row.desc)}</td></tr>`;
+  });
+  html += '</table>';
+  if (tab.pitch) {
+    html += `<div class="pitch">${esc(tab.pitch)}</div>`;
+  }
+  return html;
+}
+
+function renderSteps(tab) {
+  const steps = tab.steps || [];
+  if (!steps.length) return '<p style="color:var(--muted)">No steps configured.</p>';
+  let html = '';
+  steps.forEach((step, i) => {
+    html += `<div class="story-step">
+      <div class="step-left"><div class="step-dot blue">${i+1}</div></div>
+      <div class="step-body">
+        <div class="step-header">
+          <span class="step-title">${esc(step.title || '')}</span>
+          ${step.time ? `<span class="step-time">${esc(step.time)}</span>` : ''}
+        </div>`;
+    if (step.desc) html += `<p class="step-desc">${esc(step.desc)}</p>`;
+    if (step.pitch) html += `<div class="pitch">${esc(step.pitch)}</div>`;
+    (step.prompts || []).forEach(p => {
+      html += renderPromptCard(p);
+    });
+    html += '</div></div>';
+  });
+  return html;
+}
+
+function renderPromptCard(p) {
+  const id = 'p' + (++promptCounter);
+  return `<div class="prompt-card">
+    <div class="prompt-card-header">
+      <span class="prompt-label-text">📋 Prompt</span>
+    </div>
+    <div class="prompt-text" id="${id}">${esc(p.text || '')}</div>
+    <div class="prompt-foot">
+      <span class="prompt-hint">${esc(p.hint || '')}</span>
+      <button class="copy-btn" onclick="cp('${id}', this)">📋 Copy</button>
+    </div>
+  </div>`;
+}
+
+function renderQA(tab) {
+  const items = tab.items || [];
+  let html = `<p class="section-label">Expected Questions & Talking Points</p>`;
+  items.forEach(item => {
+    html += `<div class="qa-item">
+      <div class="qa-q" onclick="qa(this)">${esc(item.q)}</div>
+      <div class="qa-a">${esc(item.a)}</div>
+    </div>`;
+  });
+  return html;
+}
+
+function renderFiles(tab) {
+  const items = tab.items || [];
+  let html = `<p class="section-label">Demo Files</p>
+    <div class="info"><strong>How to use:</strong> Download files → upload to OneDrive or open in desktop apps. Run <code>install.ps1</code> on your demo VM to get all files automatically.</div>`;
+  const icons = { docx: '📝', xlsx: '📊', pptx: '📊', pdf: '📄' };
+  items.forEach(f => {
+    const ext = (f.name || '').split('.').pop().toLowerCase();
+    const icon = icons[ext] || '📄';
+    html += `<div class="file-dl">
+      <div class="file-icon">${icon}</div>
+      <div class="file-info">
+        <h4>${esc(f.name || '')}</h4>
+        ${f.meta ? `<div class="file-meta">${esc(f.meta)}</div>` : ''}
+        ${f.use  ? `<div class="file-use">${esc(f.use)}</div>` : ''}
+        <a class="dl-btn" href="${f.url || '#'}" download>⬇ Download</a>
+      </div>
+    </div>`;
+  });
+
+  // ZIP downloads
+  html += `<hr class="divider">
+    <p class="section-label">Download Packages</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a class="dl-btn" href="files/CopilotDemo_PromptPrompter.zip" download>📱 PromptPrompter MDs</a>
+      <a class="dl-btn" href="files/CopilotDemo_Complete_Pack.zip" download>📦 Complete Pack (MDs + Files)</a>
+    </div>`;
+  return html;
+}
+
+function addChangelogTab() {
+  // Read from /tmp/demo-improvements.log if available via API, else skip
+  // For now: show static info
+}
+
+// ── Utilities ───────────────────────────────────────────────────────────────
+function esc(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function cp(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  // Get raw text before escaping
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copied';
+    btn.classList.add('ok');
+    setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('ok'); }, 1800);
+  });
+}
+
+function qa(el) {
+  el.classList.toggle('open');
+  const ans = el.nextElementSibling;
+  if (ans) ans.classList.toggle('on');
+}
+
+// ── Boot ────────────────────────────────────────────────────────────────────
+loadContent();
+</script>
+</body>
+</html>

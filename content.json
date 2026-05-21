@@ -1,0 +1,678 @@
+{
+  "meta": {
+    "title": "Copilot Demo Playbook",
+    "version": "2026.05",
+    "repo": "https://github.com/ks12-agentic-org/copilot-demo-content",
+    "dashboard": "https://agent-ui.jens-lab.com/projects/copilot-demo/"
+  },
+  "tabs": [
+    {
+      "id": "overview",
+      "icon": "📋",
+      "title": "Run-of-Show",
+      "type": "runofshow",
+      "steps": [],
+      "timeline": [
+        {
+          "time": "0:00–0:05",
+          "desc": "Intro — \"Contoso Manufacturing has thousands of people. Every one of them uses Outlook, Teams, Word. This is what Copilot can do for each of them — starting today.\""
+        },
+        {
+          "time": "0:05–0:15",
+          "desc": "🆕 What's New — April/May 2026 features for existing Copilot users. GPT-5.5, Claude in Word, Plan mode in Excel, image generation in PowerPoint, Notebooks. (10 min)"
+        },
+        {
+          "time": "0:15–0:20",
+          "desc": "💬 Copilot Chat — For users without Copilot license. What they can do with Copilot Chat (free with M365). Web search, drafting, file summaries. (5 min)"
+        },
+        {
+          "time": "0:20–0:30",
+          "desc": "🧠 Work IQ / Day 1 — For new Copilot users. Inbox catch-up, calendar briefing, cross-app connections. customer industry context. (10 min)"
+        },
+        {
+          "time": "0:30–0:40",
+          "desc": "📧 Copilot in Outlook — Email triage, summarize thread, draft RFQ follow-up. key account context. (10 min)"
+        },
+        {
+          "time": "0:40–0:48",
+          "desc": "💬 Copilot in Teams — Meeting recap from engineering review, Q&A from transcript. (8 min)"
+        },
+        {
+          "time": "0:48–0:52",
+          "desc": "📝 Copilot in Word — Draft report from meeting notes, rewrite for management. (4 min)"
+        },
+        {
+          "time": "0:52–0:55",
+          "desc": "📊 Copilot in Excel — Analyze production KPI data with Plan mode, create summary. (3 min)"
+        },
+        {
+          "time": "0:55–1:05",
+          "desc": "📊 Copilot in PowerPoint — Create board deck from the Q2 Sales Pipeline doc. Image generation with GPT-Image. (10 min)"
+        },
+        {
+          "time": "1:05–1:15",
+          "desc": "❓ Q&A"
+        }
+      ],
+      "pitch": ""
+    },
+    {
+      "id": "whatsnew",
+      "icon": "🆕",
+      "title": "What's New",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "⚡ GPT-5.5 Instant May 2026",
+          "desc": "Faster, sharper responses across all M365 Copilot experiences. Noticeably quicker — especially on long document summarization and complex prompts."
+        },
+        {
+          "title": "🧠 Claude Model in Word April 2026",
+          "desc": "Users can now choose Claude (Anthropic) as the AI model for drafting and editing in Word. Better for long-form writing, technical specs, and documents requiring precise language — ideal for technical engineering documents."
+        },
+        {
+          "title": "📋 Plan Mode in Excel May 2026",
+          "desc": "Before changing anything, Copilot shows you a step-by-step plan of what it intends to do. Review, adjust, then confirm. Perfect for complex production KPI workbooks where accidental changes are costly."
+        },
+        {
+          "title": "🎨 Image Model Choice April 2026",
+          "desc": "Choose between GPT-Image, Flux, or Auto for slide image generation. Different models = different visual styles. GPT-Image for photorealistic, Flux for conceptual/artistic."
+        },
+        {
+          "title": "📁 Copilot in OneDrive — Richer Understanding April 2026",
+          "desc": "Ready-to-use prompts in OneDrive. Better understanding of images and tables in files. Ask questions about your documents directly from OneDrive without opening them."
+        },
+        {
+          "title": "🔍 Researcher Agent GA",
+          "desc": "Handles complex, multistep research tasks — securely synthesizes information from your work data AND the web. Creates in-depth reports on competitive landscapes, technical standards, or market trends. Research industry standards, OEM requirements, or competitor positioning in minutes."
+        }
+      ]
+    },
+    {
+      "id": "workiq",
+      "icon": "🧠",
+      "title": "Work IQ / Day 1",
+      "duration": "10 min",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "Morning Inbox Catch-Up",
+          "time": "0:20",
+          "prompts": [
+            {
+              "id": "w1",
+              "hint": "Copilot Chat in M365 app → Work IQ → inbox grounded prompt.",
+              "text": "What's in my inbox that actually needs me this morning? Skip the newsletters. I care about anything from Contoso Ltd., Fabrikam GmbH, or from my team about open project issues. What requires a decision from me today, and what can wait until this afternoon?"
+            }
+          ]
+        },
+        {
+          "title": "Calendar Briefing",
+          "time": "0:22",
+          "prompts": [
+            {
+              "id": "w2",
+              "hint": "M365 Copilot Chat → calendar + email context → paste prompt.",
+              "text": "Brief me on today's meetings. For each one: who's joining, what's the topic, and is there anything from my email or past meetings I should know going in? I have the Contoso quarterly review at 10am — is there anything outstanding from our last project sync I should prep?"
+            }
+          ]
+        },
+        {
+          "title": "Cross-App: Contoso Project Status",
+          "time": "0:24",
+          "prompts": [
+            {
+              "id": "w3",
+              "hint": "M365 Copilot Chat → cross-app intelligence → grounded on email + meetings + files → concise status output.",
+              "text": "What's the current status on the Contoso digital transformation project? Pull from my emails, meetings, and any documents — I want: what's been agreed, what's still open, and what's blocking us. Then draft a 3-sentence status update I can paste into my weekly report."
+            }
+          ]
+        },
+        {
+          "title": "Find Action Items from Meetings",
+          "time": "0:25",
+          "prompts": [
+            {
+              "id": "w4",
+              "hint": "M365 Copilot Chat → cross-app → meeting transcripts + email search → draft follow-ups.",
+              "text": "What action items have been assigned to me in the last two weeks? Check my meeting transcripts and emails. Focus on anything related to the Contoso migration project or the Fabrikam contract negotiation — list them with owner and deadline. Then flag the 2 most overdue and draft a short follow-up message for each."
+            }
+          ]
+        },
+        {
+          "title": "Catch Up After Absence",
+          "time": "0:26",
+          "prompts": [
+            {
+              "id": "w5",
+              "hint": "M365 Copilot Chat → Work IQ → catchup mode, grounded on email + meetings.",
+              "text": "I was out sick for 3 days. What did I miss? Give me the highlights — key decisions made, anything about the Fabrikam contract renegotiation, any escalations on the Northwind Corp. delivery timeline, and any new requests from Contoso or Adventure Works."
+            }
+          ]
+        },
+        {
+          "title": "Find Everything About a Project",
+          "time": "0:27",
+          "prompts": [
+            {
+              "id": "w6",
+              "hint": "M365 Copilot Chat → cross-app search: SharePoint + email + Teams → unified account view. The \"I didn't know it could search everywhere\" moment.",
+              "text": "Find all files and emails about the Contoso account — check SharePoint, Teams, and last two weeks of email. Give me: the latest account brief, any open action items, and who owns the relationship. Then find everything from Fabrikam GmbH from the past month and tell me if there's anything I haven't responded to yet."
+            }
+          ]
+        },
+        {
+          "title": "Prepare for a High-Stakes Meeting",
+          "time": "0:28",
+          "prompts": [
+            {
+              "id": "w7",
+              "hint": "M365 Copilot Chat → meeting prep → grounded on email + files + past meetings. Outstanding wow moment: Copilot surfaces prior commitments you forgot about.",
+              "text": "I have a call with Contoso Ltd. procurement tomorrow about the Q3 contract renewal. Help me prepare: what's our current commercial position, what did we last agree to, what are the risks if we accept their proposed pricing terms, and what are the top 3 questions I should ask?"
+            }
+          ]
+        },
+        {
+          "title": "Cross-App: Who Knows About This Customer?",
+          "time": "0:28",
+          "prompts": [
+            {
+              "id": "w8",
+              "hint": "M365 Copilot Chat → cross-org intelligence → search email + org knowledge → draft internal outreach. Shows Copilot as institutional memory.",
+              "text": "Who in our company has been in contact with Northwind Corp. before? Search my emails and shared documents. Give me a summary of what's been discussed, any existing relationship context, and any commitments made. Then draft a short internal Teams message to those people asking them to share their notes before I start the proposal process."
+            }
+          ]
+        },
+        {
+          "title": "Weekly Status Briefing",
+          "time": "0:29",
+          "prompts": [
+            {
+              "id": "w9",
+              "hint": "M365 Copilot Chat → weekly summary → grounded on email + meetings + Teams.",
+              "text": "Give me a weekly wrap-up for my team. What did we accomplish this week, what's blocked, and what needs attention next week? Focus on the Contoso deal, the Fabrikam onboarding project, and the Adventure Works proposal. Pull from my emails, meetings, and Teams messages. I'll use this as my Friday management update."
+            }
+          ]
+        },
+        {
+          "title": "Writing Help: Quick Context Switch",
+          "time": "0:30",
+          "prompts": [
+            {
+              "id": "w10",
+              "hint": "M365 Copilot Chat → write from context → grounded email draft.",
+              "text": "I need to write an update email to the VP of Sales about the Q2 pipeline status. Based on what you know from my emails and recent meetings, draft a 5-sentence executive summary for her: current pipeline total, biggest risk (flag Contoso if there are open blockers), what needs her support, and next week's priorities. Keep it crisp and action-oriented — executive level, no fluff."
+            }
+          ]
+        },
+        {
+          "title": "Email + Calendar Combo: Next Week Prep",
+          "time": "0:30",
+          "desc": "The most compelling Work IQ demo: cross-app connection between email threads AND calendar events. Shows that Copilot understands your complete work context, not just one data source.",
+          "pitch": "Say: \"This is the one that surprises people. Copilot isn't just reading your inbox or just reading your calendar — it connects both. It sees that you have a Contoso call on Tuesday AND knows there are three unread emails from their team with open questions — and it prepares you in one shot.\"",
+          "prompts": [
+            {
+              "id": "w11",
+              "hint": "M365 Copilot Chat → calendar + email cross-app combo → Friday prep list. This is the core Work IQ differentiator — show it last for maximum impact.",
+              "text": "Look at my calendar for next week and cross-reference it with my recent emails. For each external meeting (Contoso Ltd., Fabrikam GmbH, Northwind Corp., Adventure Works), tell me: what open threads exist in email from that company, what was last agreed in our meetings with them, and what I should prepare. Give me a single action list I can work through this Friday afternoon to be fully ready for next week."
+            }
+          ]
+        },
+        {
+          "title": "Meeting Notes → Structured Action Plan",
+          "time": "0:31",
+          "desc": "Turn raw meeting notes into a professional action plan with owners, deadlines, and next steps — in seconds. This one makes people immediately think of last week's meeting they still haven't followed up on.",
+          "pitch": "Say: \"You leave every meeting with notes. Half of those action items never get followed up. Watch what happens when you paste your notes into Copilot.\"",
+          "prompts": [
+            {
+              "id": "w12",
+              "hint": "Copilot Chat or Word Copilot → paste meeting notes → structured output. Reference Generic_Meeting_Notes.docx for demo file.",
+              "text": "Turn these meeting notes into a structured action plan. For each action item: assign an owner (use the names mentioned in the notes), set a realistic deadline, add a priority (High / Medium / Low), and write one sentence on what \"done\" looks like. Group by owner. At the end, add a \"Decisions Made\" section and a \"Parking Lot\" for open questions we didn't resolve.\n\n[Paste your meeting notes here — or reference: ⬇ Generic_Meeting_Notes.docx]"
+            }
+          ]
+        },
+        {
+          "title": "Document → Excel-Style Summary Table",
+          "time": "0:32",
+          "desc": "Extract structured data from a document or meeting notes and format it as a table you can copy into Excel or paste into a report. People never realize how much time this saves until they see it.",
+          "pitch": "Say: \"Every project manager manually builds status tables from documents. This is that, in 10 seconds.\"",
+          "prompts": [
+            {
+              "id": "w13",
+              "hint": "Copilot Chat → attach file → Excel-ready table output. Works great with Fabrikam_Weekly_Status.docx.",
+              "text": "Read this document and extract all projects, tasks, or workstreams mentioned. Create a structured table with these columns: Item | Owner | Status | Deadline | Blockers | Next Step. Use the information from the document; where details are missing, mark as \"TBC\". Format it so I can copy it directly into Excel. After the table, add a 3-sentence executive summary of the overall status.\n\n[Attach your document — or use: ⬇ Fabrikam_Weekly_Status.docx or ⬇ Generic_Meeting_Notes.docx]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "icon": "💬",
+      "title": "Copilot Chat (Free)",
+      "duration": "5 min",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "Research: EV Cable Market Trends",
+          "desc": "Grounded web search — no license needed. Great first demo to show the power of Copilot Chat.",
+          "prompts": [
+            {
+              "id": "cc1",
+              "hint": "copilot.microsoft.com → web search enabled → paste prompt. No Copilot license needed.",
+              "text": "What are the latest trends in high-voltage EV cable systems for 800V battery architectures in 2025-2026? I work for a cable manufacturer and want to understand where the market is heading — especially for fast charging infrastructure and battery management systems. Include key players and technology challenges."
+            }
+          ]
+        },
+        {
+          "title": "Draft from Scratch: Customer Email",
+          "desc": "General drafting — no org data needed. Works with Copilot Chat.",
+          "prompts": [
+            {
+              "id": "cc2",
+              "hint": "copilot.microsoft.com → paste prompt. No M365 data access needed.",
+              "text": "Help me draft a professional email to our procurement contact at Fabrikam AG. We're responding to their RFQ for a new product system. Key points to include: we're interested in the project, we need 2 more weeks to complete technical feasibility (we may need to extend our current certification scope), we want to schedule a technical alignment call, and we're committed to their target SOP date. Tone: professional but warm, partnership-focused. Keep it under 200 words."
+            }
+          ]
+        },
+        {
+          "title": "Summarize Uploaded File",
+          "desc": "Upload a Word document to Copilot Chat and ask questions about it. No Copilot license — file upload works in chat.",
+          "prompts": [
+            {
+              "id": "cc3",
+              "hint": "copilot.microsoft.com → attach file → paste prompt. Works without Copilot license.",
+              "text": "[Upload Q2_Sales_Pipeline.docx or your own pipeline document first]\n\nSummarize this Q2 sales pipeline document for me. I need a 3-bullet executive summary: the total pipeline value, the highest-risk deal and why, and what needs to happen before end of Q2 to hit the Q3 target. Keep it sharp — I have 2 minutes before a board call."
+            }
+          ]
+        },
+        {
+          "title": "Brainstorm: RFQ Strategy",
+          "desc": "Use Copilot Chat as a thinking partner. No org data needed.",
+          "prompts": [
+            {
+              "id": "cc4",
+              "hint": "copilot.microsoft.com → paste prompt. Pure brainstorming — no M365 data.",
+              "text": "I'm preparing an RFQ response for a new customer (Fabrikam AG). This is our first engagement with them. We have strong existing relationships with Contoso Ltd. and Northwind Corp. but are new to this customer. What are the 5 most important things to get right in this first RFQ response to build trust and win the business — from an established supplier's perspective?"
+            },
+            {
+              "id": "wq-chat-research",
+              "hint": "No M365 Copilot license needed. Pure web knowledge.",
+              "text": "I have a meeting with a new enterprise client next week. Give me a quick overview: what are the top 3 productivity challenges large companies face today, and how does AI in Microsoft 365 address each? Keep it to 3 bullet points per challenge."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "outlook",
+      "icon": "📧",
+      "title": "Outlook",
+      "duration": "10 min",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "Email Triage — Back from Customer Site",
+          "time": "0:30–0:34",
+          "desc": "3 days at a customer site. 60 unread emails. Classic engineering manager scenario.",
+          "pitch": "Say: \"Every engineer comes back from a customer design review with a full inbox. In the past, that was a 2-hour sorting exercise. Watch what Copilot does with it.\"",
+          "prompts": [
+            {
+              "id": "o1",
+              "hint": "Outlook → Copilot sidebar → paste prompt. No file needed.",
+              "text": "I've been at the Contoso Ltd. design review for 3 days. I have 60 emails waiting. Tell me: what's urgent and needs a response today, what's from Contoso Ltd. or Fabrikam AG that I should read first, is there anything about our key project specs or production quality issues at Plant B, and what can I safely ignore for now?"
+            }
+          ]
+        },
+        {
+          "title": "Summarize Thread + Draft Reply",
+          "time": "0:34–0:37",
+          "desc": "Complex thread about a plant defect rate issue. 14 replies. Copilot reads it, catches you up, and drafts the management escalation reply.",
+          "prompts": [
+            {
+              "id": "o2",
+              "hint": "Open quality issue thread → Copilot summarize → draft reply.",
+              "text": "Summarize this email thread. I need to understand: what the quality issue at Plant B is exactly, what corrective actions have already been taken, and what's still open. Then draft a reply to the operations director — acknowledge the seriousness, confirm we've escalated to senior management, and request a status call tomorrow morning. Professional, direct tone. Include a proposed meeting time of 9am CET."
+            }
+          ]
+        },
+        {
+          "title": "Draft from Scratch — RFQ Follow-Up",
+          "time": "0:37–0:40",
+          "desc": "New business opportunity: Fabrikam AG RFQ. You need to respond by Friday and coordinate with 3 internal teams. Copilot drafts the coordinating email instantly.",
+          "prompts": [
+            {
+              "id": "o3",
+              "hint": "New email → Copilot Draft with Copilot → paste prompt. Optionally attach RFQ doc.",
+              "text": "I just received an RFQ from Fabrikam AG for a new product system — they want a response by this Friday. I need to coordinate with R&D on technical feasibility, with pricing on the commercial proposal, and with quality on certification scope. Draft an internal email to these three teams that: explains the opportunity (first engagement with Fabrikam AG, significant revenue potential), sets the Friday deadline clearly, assigns specific asks to each team, and requests a joint 30-minute call tomorrow at 14:00 to align before the response goes out."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "teams",
+      "icon": "💬",
+      "title": "Teams",
+      "duration": "8 min",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "Meeting Recap — Missed Engineering Review",
+          "time": "0:40–0:44",
+          "desc": "Classic scenario: quality escalation pulled you into a crisis call while the key customer design review started. You joined 20 minutes late. Copilot catches you up instantly.",
+          "prompts": [
+            {
+              "id": "t1",
+              "hint": "In Teams meeting with transcript active → Copilot icon → ask this question.",
+              "text": "I had to jump on an urgent quality call and missed the first 20 minutes of the Contoso Ltd. engineering review. Catch me up — what did they discuss before I joined? What decisions were made, what action items were assigned to our team, and what open questions are we still waiting on from Contoso Ltd.?"
+            }
+          ]
+        },
+        {
+          "title": "Q&A from Past Meeting",
+          "time": "0:44–0:48",
+          "desc": "The Fabrikam AG intro call was 2 weeks ago. You're now preparing the RFQ response and need to recall what was said about their technical requirements and timeline.",
+          "prompts": [
+            {
+              "id": "t2",
+              "hint": "Teams Copilot Chat → reference past meeting → ask Q&A from transcript.",
+              "text": "In our first intro call with Fabrikam AG two weeks ago, what did they say about their technical requirements for the product system? Specifically: did they mention the key performance requirements and their target SOP date? And was anything said about their preferred specifications or testing requirements? I need this to finalize our RFQ response."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word",
+      "icon": "📝",
+      "title": "Word",
+      "duration": "4 min",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "Draft Report from Meeting Notes",
+          "time": "0:48–0:50",
+          "desc": "Rough engineering meeting notes → structured management report. This is 30-45 minutes of formatting work done in 10 seconds.",
+          "prompts": [
+            {
+              "id": "wd1",
+              "hint": "Word → open file or new doc → Copilot sidebar → reference file → paste prompt.",
+              "text": "[Reference: Generic_Engineering_Meeting_Notes.docx]\n\nTurn these meeting notes into a professional project status report for management. Structure it with: Executive Summary (3 bullet points), Key Decisions Made, Open Action Items (in a table with owner and due date), and Risks & Escalation Items. Make it look like a real project status document — clean, professional, and ready to share with the VP Engineering. Use formal language."
+            }
+          ]
+        },
+        {
+          "title": "Rewrite for Board — Executive Version",
+          "time": "0:50–0:52",
+          "desc": "The same document, but for a different audience. Board members don't want engineering detail — they want business impact, risk, and decision requirements.",
+          "prompts": [
+            {
+              "id": "wd2",
+              "hint": "Same document → Copilot \"Rewrite\" or new prompt in sidebar → transforms for new audience.",
+              "text": "Now rewrite this document for the board. The audience has no engineering background — they care about: revenue at risk (from the Contoso and Northwind issues), what decisions they need to make, timeline impact on the Fabrikam AG RFQ opportunity, and what success looks like in 30 days. Cut all the technical detail. Maximum 1 page. Business-executive language only."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "excel",
+      "icon": "📊",
+      "title": "Excel",
+      "duration": "5 min",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "Analyze KPIs with Plan Mode (NEW)",
+          "time": "0:52–0:54",
+          "desc": "Production data from 5 plants. Copilot first shows you a plan of what it will do — review, adjust, confirm. New May 2026 feature.",
+          "prompts": [
+            {
+              "id": "ex1",
+              "hint": "Excel → Copilot → select Plan mode → paste prompt. Review plan before confirming.",
+              "text": "I have production data for our 5 plants — output, defect rate, and on-time delivery for W20/2026. Use Plan mode first: show me what you're going to do before you do it. Then: identify the 2 plants that are underperforming vs. target, create a conditional formatting highlight, add a summary row at the bottom showing plant averages, and calculate the financial impact of our 1.8% defect rate at Plant B assuming €385 unit cost and 8,412 units produced."
+            }
+          ]
+        },
+        {
+          "title": "Create KPI Dashboard",
+          "time": "0:54–0:55",
+          "desc": "Turn the analyzed data into a management-ready dashboard. Copilot builds the chart and summary automatically.",
+          "prompts": [
+            {
+              "id": "ex2",
+              "hint": "Excel → Copilot → follow-up to previous analysis → create new sheet dashboard.",
+              "text": "Now create a management dashboard on a new sheet: a bar chart comparing on-time delivery across all 5 plants, a defect rate trend if we have historical data, and a 3-sentence written summary I can copy into my Friday management email. Make the chart title \"Contoso Manufacturing Operations — W20/2026 Performance Overview\"."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "powerpoint",
+      "icon": "📊",
+      "title": "PowerPoint",
+      "duration": "10 min",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "Create Deck from Sales Pipeline Doc",
+          "time": "0:55–0:59",
+          "desc": "Start from the Q2 Sales Pipeline doc — Copilot generates a full board presentation with structure, content, and slides. This is the highest-value demo for account managers.",
+          "prompts": [
+            {
+              "id": "pp1",
+              "hint": "PowerPoint → Copilot → Create presentation from file → attach doc → paste prompt.",
+              "text": "Create a presentation from the Q2 Sales Pipeline document [upload Generic_Q2_Sales_Pipeline.docx or your own pipeline file]. I need a 6-slide board deck: 1) Executive Summary with total pipeline and key highlights, 2) Top opportunities table (top 3 deals), 3) Risk analysis — the highest-risk deal needs its own slide, 4) Q3 targets and what we need to close, 5) Recommended actions for the board, 6) Appendix with full pipeline table. Professional tone. No fluff."
+            }
+          ]
+        },
+        {
+          "title": "Add Image with GPT-Image (NEW)",
+          "time": "0:59–1:02",
+          "desc": "New April 2026 feature: choose your image model (GPT-Image vs Flux vs Auto). Show the model selection UI — this is the \"wow\" moment for new features.",
+          "prompts": [
+            {
+              "id": "pp2",
+              "hint": "PowerPoint slide → Copilot → Add image → choose GPT-Image model → paste prompt.",
+              "text": "Add a photorealistic image to the title slide showing modern industrial manufacturing — precision components, clean engineering aesthetic, quality and innovation. Use GPT-Image for maximum realism. The image should feel like a premium technology company's brand image, not a stock photo."
+            }
+          ]
+        },
+        {
+          "title": "Web Grounding — Add Market Context (NEW)",
+          "time": "1:02–1:05",
+          "desc": "New April 2026 feature: paste a URL as slide source. Show the web grounding UI — paste a public customer or industry URL to enrich a slide.",
+          "prompts": [
+            {
+              "id": "pp3",
+              "hint": "PowerPoint → Copilot → Add slide → paste URL in the web grounding field → paste prompt.",
+              "text": "[Use web grounding: paste the customer's website URL or a relevant industry URL]\n\nAdd a new slide titled \"Industry Context\" that grounds on the web content from your chosen URL. Summarize the key market positioning in 3 bullet points that support your board message. Use the web content as the primary source, not your training data."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "qa",
+      "icon": "❓",
+      "title": "Q&A Prep",
+      "type": "qa",
+      "items": [
+        {
+          "q": "What does M365 Copilot cost vs. Copilot Chat?",
+          "a": "Copilot Chat is included with M365 E3/E5 at no additional cost — it gives you general AI, web search, and file upload summarization. M365 Copilot is an add-on at ~€30/user/month (exact price depends on your agreement). The difference: M365 Copilot connects to your actual work data — emails, meetings, Teams transcripts, SharePoint files. For knowledge workers like engineers and managers handling 60-100 emails a day, that connection typically saves 1-2 hours daily and pays for itself in under a week."
+        },
+        {
+          "q": "Is our data secure? What about German data residency?",
+          "a": "Yes. Microsoft 365 Copilot uses the same data residency, security, and compliance controls as your existing M365 environment. For German tenants, data is processed and stored in EU data centers. Microsoft Copilot is built on Azure OpenAI Service with enterprise-grade data protection — your prompts and responses are not used to train OpenAI's models. Your existing M365 compliance policies, DLP rules, and information barriers all apply to Copilot interactions."
+        },
+        {
+          "q": "Does Copilot integrate with SAP?",
+          "a": "Yes — via Microsoft Graph connectors. SAP has a certified connector for M365 Copilot that brings SAP data (production orders, material master, procurement status) into Copilot's context. This means you can ask Copilot questions that combine your Outlook emails, Teams meetings, AND SAP production data in a single answer. The SAP connector is Generally Available. Implementation requires your IT team to configure the Graph connector — typically a 2-4 week project."
+        },
+        {
+          "q": "What's the ROI for manufacturing and engineering teams?",
+          "a": "Microsoft's own research shows knowledge workers save 1.5-2 hours per day with Copilot. In manufacturing and engineering: engineers writing PPAP reports, 8D analyses, and meeting summaries save 30-45 minutes per document. Account managers preparing RFQ responses save 2-4 hours per proposal. Operations managers doing daily inbox triage save 45-90 minutes daily. At €30/user/month for a user saving 1 hour/day at €60/hour fully loaded cost, the ROI is 12:1 in the first month."
+        },
+        {
+          "q": "Copilot Chat vs. M365 Copilot — when does the upgrade make sense?",
+          "a": "Copilot Chat is great for people who need general AI help — web research, drafting from scratch, uploading a file to summarize. The upgrade to M365 Copilot makes sense when the user wants Copilot to know their work: reading their emails, summarizing their meetings, searching their SharePoint files, understanding the context of their projects. For anyone who processes more than 30 emails a day or attends more than 3 meetings per week — the M365 Copilot upgrade pays for itself immediately."
+        },
+        {
+          "q": "Can Copilot work on local files?",
+          "a": "Yes — since April 2026, Copilot can work with locally stored files on your device (Word, Excel, PowerPoint) when they're opened in the desktop app. You can also upload files directly to Copilot Chat for one-time analysis. For the best experience, OneDrive sync is recommended so files are also cloud-accessible — but it's no longer a hard requirement as of April 2026."
+        },
+        {
+          "q": "What are the next steps after today's demo?",
+          "a": "Three options: (1) Pilot program — start with 50-100 users from engineering and sales, measure time savings over 30 days, use Microsoft's Copilot Dashboard to track adoption; (2) Full rollout plan — your Microsoft account team can provide customer-specific ROI modeling and phased deployment plan; (3) Technical deep-dive — if SAP integration or data governance questions are priorities, we can schedule a 2-hour architecture session with Microsoft FastTrack. Which of these makes sense as a first step for you?"
+        }
+      ]
+    },
+    {
+      "id": "files",
+      "icon": "📥",
+      "title": "Files",
+      "type": "files",
+      "items": [
+        {
+          "name": "Generic_Engineering_Meeting_Notes.docx",
+          "meta": "Word Document · Engineering Review · Generic project context",
+          "use": "Rough engineering meeting notes. Action items, quality issues, project discussion.",
+          "url": "files/Generic_Engineering_Meeting_Notes.docx"
+        },
+        {
+          "name": "Generic_Q2_Sales_Pipeline.docx",
+          "meta": "Word Document · Sales Pipeline Q2 2026 · Generic accounts · €47M",
+          "use": "Q2 2026 pipeline with 5 opportunities. Risk analysis for Mercedes SLA renegotiation.",
+          "url": "files/Generic_Q2_Sales_Pipeline.docx"
+        },
+        {
+          "name": "Generic_EV_Component_Comparison.docx",
+          "meta": "Word Document · Competitive Analysis · EV Cable Systems",
+          "use": "Competitor comparison: Contoso Manufacturing vs. key competitors. Technical specs and market positioning.",
+          "url": "files/Generic_EV_Component_Comparison.docx"
+        },
+        {
+          "name": "Generic_RFQ_Response.docx",
+          "meta": "Word Document · RFQ Response · Generic new account · €7.9M",
+          "use": "Complete RFQ response template. Scope of supply, commercial proposal, key differentiators, next steps.",
+          "url": "files/Generic_RFQ_Response.docx"
+        },
+        {
+          "name": "Generic_Weekly_Operations_Status.docx",
+          "meta": "Word Document · W20/2026 Operations · 5 Plants · KPIs, Defect Rates, OTD",
+          "use": "Weekly ops status for W20/2026. Production KPIs, defect rate alerts, inventory, customer escalations.",
+          "url": "files/Generic_Weekly_Operations_Status.docx"
+        }
+      ]
+    },
+    {
+      "id": "agentbasic",
+      "icon": "🤖",
+      "title": "Agent Builder — Basic (No PayGo)",
+      "duration": "6 min",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "Step 1 — Agent Builder öffnen",
+          "desc": "microsoft365.com/chat → linke Sidebar → \"+\" oder \"Agents\" → \"Build an agent\"\nODER: Teams → Copilot → \"+\" → \"Build an agent\"",
+          "prompts": []
+        },
+        {
+          "title": "Step 2 — Agent beschreiben",
+          "desc": "Name und Beschreibung in der Conversational UI eingeben. Copilot hilft beim Formulieren.",
+          "prompts": [
+            {
+              "hint": "Agent definieren (Spracheingabe / Describe-Tab)",
+              "text": "I want to build an agent that helps our sales team research potential customers before a meeting. The agent should search the web for: company overview, recent news, financial signals, key decision makers, and relevant industry trends. It should give structured summaries — ready to use in 2 minutes before a call. Professional tone, always cite sources."
+            }
+          ]
+        },
+        {
+          "title": "Step 3 — Conversation Starters hinzufügen",
+          "desc": "",
+          "prompts": [
+            {
+              "hint": "",
+              "text": "Add these conversation starters:\n• \"Research [Company Name] before my meeting tomorrow\"\n• \"What's in the news about [Company] this week?\"\n• \"Give me a competitive overview of [Industry] for my pitch\"\n• \"Who are the key decision makers at [Company]?\""
+            }
+          ]
+        },
+        {
+          "title": "Step 4 — Agent testen",
+          "desc": "Knowledge Source: nur Web (öffentliche Inhalte, kein SharePoint, kein Firmen-Datei-Upload)\nTrotzdem: sofort einsatzbereit für externe Recherche.",
+          "prompts": [
+            {
+              "hint": "Test: Kundenrecherche vor Meeting",
+              "text": "Research Fabrikam AG before my meeting tomorrow. Give me: company overview (size, HQ, business), recent news from the last 4 weeks, their key strategic initiatives, and 3 conversation starters I can use in an introductory meeting."
+            },
+            {
+              "hint": "Test: Markttrend-Recherche",
+              "text": "Give me a structured overview of the current state of industrial automation in European manufacturing for 2025-2026. Focus on: key trends, technology drivers, top vendors, and what decision makers are currently prioritizing. Keep it under 300 words."
+            }
+          ]
+        },
+        {
+          "title": "Step 5 — Agent teilen",
+          "desc": "Teilen via Link (org-intern). Jeder im Unternehmen mit dem Link kann den Agent nutzen.\nKein Admin-Approval nötig für Personal/Team-Agents.\n\n💬 Say: \"Ohne einen Euro extra ausgegeben, ohne IT-Ticket: ein spezialisierter \nRecherche-Assistent für das Sales-Team. 5 Minuten Aufwand.\nWas er nicht kann: eigene Firmendaten einbinden. Dafür braucht es PayGo oder M365 Copilot.\"",
+          "prompts": []
+        },
+        {
+          "title": "Was Basic (ohne PayGo) kann und nicht kann",
+          "desc": "✅ KANN (Agent Builder ohne PayGo):\n• Agent Builder vollständig nutzbar\n• Benutzerdefinierte Anweisungen + Conversation Starters\n• Web Search als Knowledge Source (öffentliches Internet)\n• Agent via Link teilen (org-intern)\n• Persönliche und Team-Agenten\n\n❌ NICHT MÖGLICH (braucht PayGo oder M365 Copilot):\n• Datei-Upload als Knowledge Source\n• SharePoint / OneDrive anbinden\n• Eigene Firmen-Daten im Agent\n• Tenant-Daten (Mails, Meetings, Calendar)\n• SAP / Salesforce via Graph Connectors\n• Actions (automatisch E-Mails senden, Datensätze erstellen)\n\n→ NÄCHSTER SCHRITT: Mit M365 Copilot Lizenz — alles davon freischalten.",
+          "prompts": []
+        }
+      ]
+    },
+    {
+      "id": "agentpremium",
+      "icon": "🤖",
+      "title": "Agent Builder — Premium (M365 Copilot)",
+      "duration": "12 min",
+      "type": "steps",
+      "steps": [
+        {
+          "title": "Teil A — Onboarding-Agent mit Datei-Upload (5 min)",
+          "desc": "Zeigen: File Upload als Knowledge Source — der einfachste Einstieg über Basic hinaus.\nSzenario: Neue Mitarbeiter fragen täglich dieselben 12 Fragen an die HR-Inbox. Agent Builder → \"Knowledge\" → \"Upload files\" → Engineering_Onboarding_FAQ.docx hochladen\n(Datei liegt im Files-Tab des Dashboards)\n\n💬 Say: \"Das ist die einfachste Knowledge Source. Eine Datei hochladen —\nder Agent weiß alles darin. Nachteil: wenn das Dokument sich ändert, muss man neu hochladen.\"",
+          "prompts": [
+            {
+              "hint": "Agent erstellen",
+              "text": "Build me an Engineering Onboarding Assistant. It should answer questions from new employees about tools, access requests, processes, and company standards. Friendly tone, step-by-step guidance. When it doesn't know something, it should say so and recommend who to contact."
+            },
+            {
+              "hint": "Knowledge: Datei hochladen",
+              "text": "I'm a new engineer. I need to submit a PPAP for the first time. Walk me through the process step by step — what do I need, who do I contact, and where do I find the templates?"
+            }
+          ]
+        },
+        {
+          "title": "Teil B — Supplier Escalation Agent mit Live SharePoint (7 min)",
+          "desc": "PREMIUM: Statt Datei-Upload → Live SharePoint-Verbindung.\nDer Agent liest immer die aktuelle Version. Kein Re-Upload. Kein stale content.\n\nSzenario: Einkäufer und Ingenieure eskalieren Lieferanten-Probleme via E-Mail —\ninkonsistent, fehlende Felder, falsche Eskalationsstufe. Agent Builder → \"Knowledge\" → \"SharePoint\" → SharePoint-URL eingeben\n\n💬 Say: \"Das ist der Game Changer. Kein Datei-Upload — direkter Zugriff auf \ndie Live-Daten in SharePoint. Spec-Änderung gestern eingespielt? Agent weiß's heute.\" Agent soll L2 erkennen (Repeat + Line Impact <4h) und passende E-Mail-Vorlage nutzen.\nZeigen: strukturierte Eskalations-E-Mail mit allen Pflichtfeldern automatisch befüllt.",
+          "prompts": [
+            {
+              "hint": "Agent erstellen",
+              "text": "Build a Supplier Escalation Agent for our procurement and quality team. When someone reports a supplier issue, the agent should:\n1. Collect: supplier name, part number, production impact (Y/N), defect description\n2. Determine escalation level: L1 (single issue <5% defect), L2 (repeat or line impact), L3 (stop/recall/legal)\n3. Draft a structured escalation email in the right format\n4. Suggest 3 next actions\n\nStep-by-step, professional tone. Don't ask for all info at once."
+            },
+            {
+              "hint": "Knowledge: Live SharePoint verbinden",
+              "text": "I have a quality issue. Supplier Fabrikam AG, part BSM-400-R3, we're seeing 3.8% defect rate. 500 units affected. Our Contoso Plant B assembly line can keep running for 4 more hours then we stop. What should I do?"
+            }
+          ],
+          "_next_hint": "Testen: Agent erkennt Eskalationslevel"
+        },
+        {
+          "title": "Teil C — Actions (Copilot Studio, 2 min Konzept)",
+          "desc": "Für echte Power-User: Actions via Copilot Studio.\nDer Agent tut nicht nur Antworten geben — er HANDELT.\n\nBeispiele:\n• NCR direkt im Qualitätssystem anlegen\n• Eskalations-E-Mail automatisch absenden\n• Power Automate Flow triggern\n• SAP-Daten abfragen\n\nCopilot Studio öffnen (copilotstudio.microsoft.com)\n→ Agent → \"Tools\" → \"Add tool\" → Connector auswählen\n\n💬 Say: \"Das ist der Übergang vom AI Assistant zum AI Worker.\nDer Agent schreibt die E-Mail nicht nur — er schickt sie ab, \nloggt sie, und updated den Tracker. Ohne dass der Nutzer etwas copy-pasten muss.\"",
+          "prompts": []
+        },
+        {
+          "title": "Basic vs. Premium — Vergleich",
+          "desc": "BASIC (kein PayGo, kostenlos):\n✅ Agent Builder nutzbar\n✅ Web Search als Knowledge\n✅ Teilen via Link\n❌ Keine Firmendaten\n❌ Kein File Upload\n❌ Kein SharePoint\n❌ Keine Actions\n\nPREMIUM (M365 Copilot, €30/user/month):\n✅ File Upload als Knowledge ← neu\n✅ Live SharePoint + OneDrive ← neu\n✅ Mail, Calendar, Meetings des Users ← neu\n✅ Graph Connectors (SAP, Salesforce, 600+) ← neu\n✅ Actions via Copilot Studio ← neu\n✅ Org-weite Verteilung ← neu\n✅ Priority Access zu Modellen ← neu\n\n💬 Closing: \"Basic zeigt was möglich ist. Premium zeigt was es bedeutet.\nFür einen Nutzer, der täglich 30 Minuten mit manuellen Eskalations-E-Mails verbringt: \nROI in der ersten Woche.\"",
+          "prompts": []
+        }
+      ]
+    }
+  ]
+}

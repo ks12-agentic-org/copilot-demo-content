@@ -32,12 +32,58 @@ Example: Before writing "Copilot in Outlook can do X" → search `microsoft_docs
 ## Repo Structure
 
 ```
+index.html        → Dashboard renderer (loads content.json, NO hardcoded content)
+content.json      → ALL demo content (tabs, prompts, steps, files) ← AGENTS EDIT THIS
 promptprompter/   → PromptPrompter MDs (01–13, numbered, English only)
 files/            → Demo documents (DOCX, XLSX — Contoso/Fabrikam/Northwind names only)
-dashboard/        → HTML Dashboard → deployed to Azure VM
 DEMO_COMPANIES.md → Full reference for all MS fictitious companies
 install.ps1       → One-liner setup for CDX Demo VMs
 .github/          → CI/CD workflows
+```
+
+## Architecture: JSON-Driven Dashboard
+
+**index.html** is a pure renderer — it contains ZERO demo content.
+It fetches `content.json` at runtime and builds the UI dynamically.
+
+**content.json** is the single source of truth:
+```json
+{
+  "meta": { "title": "...", "version": "2026.05" },
+  "tabs": [
+    {
+      "id": "outlook",
+      "icon": "📧",
+      "title": "Outlook",
+      "duration": "10 min",
+      "steps": [
+        {
+          "title": "Email Triage",
+          "time": "0:30–0:34",
+          "desc": "Presenter instruction here",
+          "pitch": "Optional pitch text",
+          "prompts": [
+            { "hint": "Where to click", "text": "The actual prompt text..." }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Agent workflow — to add/edit content:**
+1. Edit `content.json` only (never touch index.html for content changes)
+2. Test locally: `cd copilot-demo && python -m http.server 3000` → http://localhost:3000
+3. Commit + push → auto-deployed
+
+**Run locally (no install needed):**
+```bash
+# Option A: Python (built into Windows/Mac/Linux)
+python -m http.server 3000
+# Option B: Node.js
+npx serve .
+# Option C: Double-click index.html (works if content.json is inline)
 ```
 
 ---
