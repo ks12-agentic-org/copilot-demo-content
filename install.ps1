@@ -89,3 +89,43 @@ Write-Host ""
 Write-Host "  Repo: $REPO" -ForegroundColor DarkGray
 Write-Host "  Run again to update to latest version." -ForegroundColor DarkGray
 Write-Host ""
+
+# ── Install Playwright Demo Agent (optional) ────────────────────────────────
+Write-Host ""
+Write-Host "  🎭 Setting up Demo Agent (Playwright)..." -ForegroundColor White
+
+# Check if Node.js is installed
+$nodeInstalled = $null -ne (Get-Command node -ErrorAction SilentlyContinue)
+
+if (-not $nodeInstalled) {
+    Write-Host "  ⬇  Installing Node.js (LTS)..." -ForegroundColor Yellow
+    $nodeInstaller = "$env:TEMP\node-lts.msi"
+    Invoke-WebRequest "https://nodejs.org/dist/latest-v22.x/node-v22.13.0-x64.msi" -OutFile $nodeInstaller -UseBasicParsing
+    Start-Process msiexec -Args "/i $nodeInstaller /quiet /norestart" -Wait
+    $env:PATH += ";$env:ProgramFiles\nodejs"
+    Write-Host "  ✅ Node.js installed" -ForegroundColor Green
+} else {
+    $nodeVer = (node --version 2>$null)
+    Write-Host "  ✅ Node.js already installed ($nodeVer)" -ForegroundColor Green
+}
+
+# Copy demo-agent.js to demo files folder
+$agentSrc = "$extractedFolder\demo-agent.js"
+$agentDest = Join-Path $dest "demo-agent.js"
+if (Test-Path $agentSrc) {
+    Copy-Item $agentSrc $agentDest -Force
+}
+
+# Install Playwright in demo folder
+Write-Host "  ⬇  Installing Playwright..." -ForegroundColor Yellow
+Push-Location $dest
+& npm install playwright --prefer-offline --no-audit --no-fund 2>$null | Out-Null
+& npx playwright install chromium msedge --with-deps 2>$null | Out-Null
+Pop-Location
+Write-Host "  ✅ Playwright ready" -ForegroundColor Green
+
+Write-Host ""
+Write-Host "  🎭 Demo Agent ready! Usage:" -ForegroundColor Cyan
+Write-Host "     cd '$dest'" -ForegroundColor White
+Write-Host "     node demo-agent.js outlook    # Setup Outlook demo" -ForegroundColor White
+Write-Host "     node demo-agent.js --list     # Show all setups" -ForegroundColor White

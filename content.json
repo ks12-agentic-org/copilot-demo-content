@@ -219,7 +219,14 @@
             }
           ]
         }
-      ]
+      ],
+      "playwright": {
+        "setup_prompt": "Open Microsoft Edge and navigate to https://microsoft365.com/chat. Sign in as Leila Goncalves (LeilaG@M365CPI98544940.onmicrosoft.com). Make sure you're on the Work tab (not Web). Close any previous conversations. The chat box should be empty and ready for a new prompt. Maximize the window. The demo is ready: Copilot Chat Work mode, ready for Day-1 inbox catchup demo.",
+        "url": "https://microsoft365.com/chat",
+        "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
+        "ready_check": "M365 Copilot Chat open, Work tab selected, empty chat",
+        "setup_time_sec": 10
+      }
     },
     {
       "id": "chat",
@@ -277,7 +284,14 @@
             }
           ]
         }
-      ]
+      ],
+      "playwright": {
+        "setup_prompt": "Open Microsoft Edge and navigate to https://microsoft365.com/chat. Sign in as SELMA NYBERG (SelmaN@M365CPI98544940.onmicrosoft.com) — she has NO M365 Copilot license, only Copilot Chat. This is the before/after comparison demo. Make sure you're on the Copilot Chat interface. Close any previous conversations. Maximize the window. The demo is ready: Copilot Chat without M365 Copilot license — perfect for showing free tier capabilities.",
+        "url": "https://microsoft365.com/chat",
+        "user": "SelmaN@M365CPI98544940.onmicrosoft.com",
+        "ready_check": "Copilot Chat open as Selma (no M365 Copilot license)",
+        "setup_time_sec": 10
+      }
     },
     {
       "id": "outlook",
@@ -323,7 +337,14 @@
             }
           ]
         }
-      ]
+      ],
+      "playwright": {
+        "setup_prompt": "Open Microsoft Edge and navigate to https://outlook.office.com. Sign in as Leila Goncalves (LeilaG@M365CPI98544940.onmicrosoft.com) if not already logged in. Go to the Inbox. Make sure there are several unread emails visible. Open the Copilot sidebar by clicking the Copilot icon (top right). Maximize the browser window to full screen. The demo is ready: inbox triage scenario with Copilot sidebar open.",
+        "url": "https://outlook.office.com/mail/inbox",
+        "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
+        "ready_check": "Inbox visible + Copilot sidebar open",
+        "setup_time_sec": 15
+      }
     },
     {
       "id": "teams",
@@ -356,7 +377,14 @@
             }
           ]
         }
-      ]
+      ],
+      "playwright": {
+        "setup_prompt": "Open Microsoft Edge and navigate to https://teams.microsoft.com. Sign in as Leila Goncalves (LeilaG@M365CPI98544940.onmicrosoft.com) if not already logged in. Go to the Chat tab. Make sure the Teams app is fully loaded. Open the Copilot sidebar or Chat icon at the top. Maximize the window. The demo is ready: Teams Copilot chat ready for meeting recap demo.",
+        "url": "https://teams.microsoft.com/_#/conversations/",
+        "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
+        "ready_check": "Teams loaded + Copilot chat accessible",
+        "setup_time_sec": 20
+      }
     },
     {
       "id": "word",
@@ -389,7 +417,14 @@
             }
           ]
         }
-      ]
+      ],
+      "playwright": {
+        "setup_prompt": "Open Microsoft Edge and navigate to https://www.office.com. Sign in as Leila Goncalves. Click on Word. Create a new blank document. Open the Copilot sidebar (click the Copilot icon in the ribbon or Home tab). Also have File Explorer ready with the demo files folder (CopilotDemoFiles on Desktop or OneDrive). Maximize Word. The demo is ready: Word with Copilot sidebar open, ready to upload Engineering_Meeting_Notes_Raw.docx.",
+        "url": "https://www.office.com/launch/word",
+        "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
+        "ready_check": "Word open + Copilot sidebar visible",
+        "setup_time_sec": 20
+      }
     },
     {
       "id": "excel",
@@ -422,7 +457,15 @@
             }
           ]
         }
-      ]
+      ],
+      "playwright": {
+        "setup_prompt": "Open Microsoft Edge and navigate to https://www.office.com. Sign in as Leila Goncalves. Open the file Generic_Plant_KPI_Data.xlsx from OneDrive (it should be there after running install.ps1). If not in OneDrive, open Excel online and upload it. Open the Copilot sidebar in Excel (Home ribbon → Copilot). Maximize the window. The demo is ready: Excel with KPI data loaded and Copilot sidebar open.",
+        "url": "https://www.office.com/launch/excel",
+        "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
+        "file": "Generic_Plant_KPI_Data.xlsx",
+        "ready_check": "Excel with KPI file open + Copilot sidebar",
+        "setup_time_sec": 25
+      }
     },
     {
       "id": "powerpoint",
@@ -467,7 +510,15 @@
             }
           ]
         }
-      ]
+      ],
+      "playwright": {
+        "setup_prompt": "Open Microsoft Edge and navigate to https://www.office.com. Sign in as Leila Goncalves. Open PowerPoint online. Create a new blank presentation. Open the Copilot sidebar (Designer or Copilot icon in ribbon). Also open a second tab with the file Generic_Q2_Sales_Pipeline.docx ready to upload. Maximize PowerPoint. The demo is ready: PowerPoint with Copilot open, sales pipeline doc ready to reference.",
+        "url": "https://www.office.com/launch/powerpoint",
+        "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
+        "file": "Generic_Q2_Sales_Pipeline.docx",
+        "ready_check": "PowerPoint open + Copilot sidebar + pipeline doc ready",
+        "setup_time_sec": 20
+      }
     },
     {
       "id": "qa",
@@ -599,7 +650,14 @@
           "desc": "✅ KANN (Agent Builder ohne PayGo):\n• Agent Builder vollständig nutzbar\n• Benutzerdefinierte Anweisungen + Conversation Starters\n• Web Search als Knowledge Source (öffentliches Internet)\n• Agent via Link teilen (org-intern)\n• Persönliche und Team-Agenten\n\n❌ NICHT MÖGLICH (braucht PayGo oder M365 Copilot):\n• Datei-Upload als Knowledge Source\n• SharePoint / OneDrive anbinden\n• Eigene Firmen-Daten im Agent\n• Tenant-Daten (Mails, Meetings, Calendar)\n• SAP / Salesforce via Graph Connectors\n• Actions (automatisch E-Mails senden, Datensätze erstellen)\n\n→ NÄCHSTER SCHRITT: Mit M365 Copilot Lizenz — alles davon freischalten.",
           "prompts": []
         }
-      ]
+      ],
+      "playwright": {
+        "setup_prompt": "Open Microsoft Edge and navigate to https://microsoft365.com/chat. Sign in as Selma Nyberg (SelmaN@M365CPI98544940.onmicrosoft.com) — Copilot Chat without M365 Copilot. In the left sidebar, look for the Agents section or click the '+' button to add an agent. Navigate to 'Build an agent'. The Agent Builder UI should open. Maximize the window. The demo is ready: Agent Builder in Copilot Chat (no license, no PayGo) — only web search available as knowledge source.",
+        "url": "https://microsoft365.com/chat",
+        "user": "SelmaN@M365CPI98544940.onmicrosoft.com",
+        "ready_check": "Agent Builder open in Copilot Chat (Selma account)",
+        "setup_time_sec": 15
+      }
     },
     {
       "id": "agentpremium",
@@ -647,7 +705,15 @@
           "desc": "BASIC (kein PayGo, kostenlos):\n✅ Agent Builder nutzbar\n✅ Web Search als Knowledge\n✅ Teilen via Link\n❌ Keine Firmendaten\n❌ Kein File Upload\n❌ Kein SharePoint\n❌ Keine Actions\n\nPREMIUM (M365 Copilot, €30/user/month):\n✅ File Upload als Knowledge ← neu\n✅ Live SharePoint + OneDrive ← neu\n✅ Mail, Calendar, Meetings des Users ← neu\n✅ Graph Connectors (SAP, Salesforce, 600+) ← neu\n✅ Actions via Copilot Studio ← neu\n✅ Org-weite Verteilung ← neu\n✅ Priority Access zu Modellen ← neu\n\n💬 Closing: \"Basic zeigt was möglich ist. Premium zeigt was es bedeutet.\nFür einen Nutzer, der täglich 30 Minuten mit manuellen Eskalations-E-Mails verbringt: \nROI in der ersten Woche.\"",
           "prompts": []
         }
-      ]
+      ],
+      "playwright": {
+        "setup_prompt": "Open Microsoft Edge and navigate to https://microsoft365.com/chat. Sign in as Leila Goncalves (LeilaG@M365CPI98544940.onmicrosoft.com) — she has M365 Copilot license. In the left sidebar, find 'Agents' or click '+' to build a new agent. Open the Agent Builder. Make sure you also have File Explorer open with the demo files folder (Engineering_Onboarding_FAQ.docx ready). Maximize the window. The demo is ready: Agent Builder with M365 Copilot — file upload and SharePoint knowledge available.",
+        "url": "https://microsoft365.com/chat",
+        "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
+        "file": "Engineering_Onboarding_FAQ.docx",
+        "ready_check": "Agent Builder open as Leila (M365 Copilot license)",
+        "setup_time_sec": 15
+      }
     }
   ]
 }
