@@ -225,7 +225,10 @@
         "url": "https://microsoft365.com/chat",
         "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
         "ready_check": "M365 Copilot Chat open, Work tab selected, empty chat",
-        "setup_time_sec": 10
+        "setup_time_sec": 10,
+        "prerun_prompt": "You are preparing a live Microsoft Copilot demo for Work IQ / Day 1. Execute these steps:\n\n1. Open Edge and navigate to https://microsoft365.com/chat — sign in as LeilaG@M365CPI98544940.onmicrosoft.com\n2. Make sure you are on the WORK tab (not Web tab) in Copilot Chat\n3. Clear any previous conversation (start a new chat if needed)\n4. Type this prompt and SUBMIT IT:\n   \"I just started a new role at Contoso Manufacturing. It's my first day back after being at the Contoso Ltd. site for 3 days. I have 60 emails and missed 4 meetings. Give me: 1) a summary of what's most urgent in my inbox, 2) what I missed in those meetings, 3) any action items assigned to me, and 4) a suggested priority list for my first 2 hours.\"\n5. Wait for the complete response\n6. Scroll to make sure the full response is visible\n7. Leave Copilot Chat open with the response on screen\n\nHANDOFF POINT: Day-1 Work IQ response showing inbox summary, meeting recaps, action items. Presenter walks through it and asks follow-up questions live.",
+        "handoff": "Work IQ day-1 response visible — inbox, meetings, action items all shown",
+        "prerun_time_sec": 40
       }
     },
     {
@@ -290,7 +293,10 @@
         "url": "https://microsoft365.com/chat",
         "user": "SelmaN@M365CPI98544940.onmicrosoft.com",
         "ready_check": "Copilot Chat open as Selma (no M365 Copilot license)",
-        "setup_time_sec": 10
+        "setup_time_sec": 10,
+        "prerun_prompt": "You are preparing a Copilot Chat free-tier demo (no M365 Copilot license). Execute these steps:\n\n1. Open Edge and navigate to https://microsoft365.com/chat — sign in as SelmaN@M365CPI98544940.onmicrosoft.com (Selma has NO M365 Copilot license)\n2. Make sure you are on the Work tab\n3. Clear any previous conversation\n4. Type this prompt and SUBMIT IT (this is web-grounded research):\n   \"What are the latest trends in industrial automation for European manufacturing in 2025-2026? Focus on: key technology drivers, AI adoption patterns, top vendor strategies, and what plant managers are currently prioritizing. Give me a structured summary I can use in a customer conversation.\"\n5. Wait for the full response with sources\n6. Leave Copilot Chat open with the research result visible\n\nHANDOFF POINT: Research result with sources visible. Presenter explains: 'This is what every M365 user has for free — no Copilot license needed. Web-grounded AI research.' Then transitions to showing what M365 Copilot adds on top.",
+        "handoff": "Web-grounded research result with sources visible — free tier demo ready",
+        "prerun_time_sec": 30
       }
     },
     {
@@ -343,7 +349,10 @@
         "url": "https://outlook.office.com/mail/inbox",
         "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
         "ready_check": "Inbox visible + Copilot sidebar open",
-        "setup_time_sec": 15
+        "setup_time_sec": 15,
+        "prerun_prompt": "You are preparing a live Microsoft Copilot demo for Outlook. Use Playwright MCP to execute these steps completely before the presenter arrives:\n\n1. Open Edge and navigate to https://outlook.office.com — sign in as LeilaG@M365CPI98544940.onmicrosoft.com if needed\n2. Go to the Inbox. Wait for emails to load.\n3. Open the Copilot sidebar (click the Copilot icon in the top-right of Outlook)\n4. In the Copilot sidebar, type this prompt and SUBMIT IT (press Enter):\n   \"I've been at the Contoso Ltd. design review for 3 days. I have 60 emails waiting. Tell me: what's urgent and needs a response today, what's from Contoso Ltd. or Fabrikam AG that I should read first, is there anything about our key project specs or production quality issues at Contoso Plant B, and what can I safely ignore for now?\"\n5. Wait for Copilot to generate the full response (do not interrupt)\n6. Take a snapshot to confirm the response is visible\n7. Leave the browser open with this result visible — the presenter will take over from here\n\nHANDOFF POINT: Copilot inbox analysis result is visible on screen. Presenter can read it to the audience and ask follow-up questions.",
+        "handoff": "Copilot inbox analysis visible — presenter takes over at the result",
+        "prerun_time_sec": 45
       }
     },
     {
@@ -383,7 +392,10 @@
         "url": "https://teams.microsoft.com/_#/conversations/",
         "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
         "ready_check": "Teams loaded + Copilot chat accessible",
-        "setup_time_sec": 20
+        "setup_time_sec": 20,
+        "prerun_prompt": "You are preparing a live Microsoft Copilot demo for Teams. Execute these steps:\n\n1. Open Edge and navigate to https://teams.microsoft.com — sign in as LeilaG@M365CPI98544940.onmicrosoft.com\n2. Go to the Calendar or Meetings section. Find the most recent meeting with a transcript available.\n   If no meeting with transcript exists, navigate to the Copilot chat area in Teams.\n3. Open the Copilot chat in Teams (click the Copilot icon in the left sidebar)\n4. Type this prompt and SUBMIT IT:\n   \"I had to jump on an urgent quality call and missed the first 20 minutes of the Contoso Ltd. engineering review. Catch me up — what did they discuss before I joined? What decisions were made, what action items were assigned to our team, and what open questions are we still waiting on from Contoso Ltd.?\"\n5. Wait for the full response\n6. Leave browser open with the response visible\n\nHANDOFF POINT: Teams Copilot meeting recap visible. Presenter can scroll through it with the audience.",
+        "handoff": "Teams meeting recap response visible — presenter takes over",
+        "prerun_time_sec": 40
       }
     },
     {
@@ -423,7 +435,10 @@
         "url": "https://www.office.com/launch/word",
         "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
         "ready_check": "Word open + Copilot sidebar visible",
-        "setup_time_sec": 20
+        "setup_time_sec": 20,
+        "prerun_prompt": "You are preparing a live Microsoft Copilot demo for Word. Execute these steps:\n\n1. Open Edge and navigate to https://www.office.com — sign in as LeilaG@M365CPI98544940.onmicrosoft.com\n2. Open Word online. Create a new blank document OR upload Engineering_Meeting_Notes_Raw.docx from CopilotDemoFiles.\n3. If uploading the file: click File > Open > upload Engineering_Meeting_Notes_Raw.docx\n4. Open the Copilot sidebar in Word (Home ribbon > Copilot icon, or right panel)\n5. In the sidebar, type this prompt and SUBMIT IT:\n   \"Turn these meeting notes into a professional project status report for management. Structure it with: Executive Summary (3 bullet points), Key Decisions Made, Open Action Items (table: Action | Owner | Due Date), and Risks & Escalation Items. Professional language, ready to share with VP Engineering. No abbreviations.\"\n6. Wait for the full document draft to appear\n7. Leave Word open showing the generated report\n\nHANDOFF POINT: Word document with professional status report generated. Presenter can scroll through it, make live edits with Copilot, then show the 'rewrite for board' follow-up.",
+        "handoff": "Word status report generated from meeting notes — presenter takes over",
+        "prerun_time_sec": 50
       }
     },
     {
@@ -464,7 +479,10 @@
         "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
         "file": "Generic_Plant_KPI_Data.xlsx",
         "ready_check": "Excel with KPI file open + Copilot sidebar",
-        "setup_time_sec": 25
+        "setup_time_sec": 25,
+        "prerun_prompt": "You are preparing a live Microsoft Copilot demo for Excel. Execute these steps completely:\n\n1. Open Edge and navigate to https://www.office.com — sign in as LeilaG@M365CPI98544940.onmicrosoft.com\n2. Open Excel online. Upload the file Generic_Plant_KPI_Data.xlsx from the CopilotDemoFiles folder on OneDrive or Desktop.\n3. Once the file is open, click the Copilot icon in the Home ribbon to open the Copilot sidebar.\n4. In the Copilot sidebar, type this prompt and SUBMIT IT:\n   \"I have production data for 5 plants. Use Plan mode: show me what you're going to do before making changes. Then: identify the 2 plants underperforming on defect rate (target: <0.5%), highlight them red, add a summary row at the bottom with averages, and calculate the financial impact of Plant A's 1.8% defect rate at €385 unit cost × 8,412 units.\"\n5. IMPORTANT: When Plan Mode shows the plan, CONFIRM it (click Accept/Confirm)\n6. Wait for Copilot to apply all changes\n7. Scroll to show the highlighted cells and summary row clearly\n8. Leave browser open at this state\n\nHANDOFF POINT: Excel sheet with highlighted underperforming plants, summary row, and financial impact calculated. Presenter shows the result and asks for the dashboard next.",
+        "handoff": "Excel analysis complete — highlighted cells, summary row, financial impact visible",
+        "prerun_time_sec": 60
       }
     },
     {
@@ -517,7 +535,10 @@
         "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
         "file": "Generic_Q2_Sales_Pipeline.docx",
         "ready_check": "PowerPoint open + Copilot sidebar + pipeline doc ready",
-        "setup_time_sec": 20
+        "setup_time_sec": 20,
+        "prerun_prompt": "You are preparing a live Microsoft Copilot demo for PowerPoint. Execute these steps:\n\n1. Open Edge and navigate to https://www.office.com — sign in as LeilaG@M365CPI98544940.onmicrosoft.com\n2. Open PowerPoint online. Create a new blank presentation.\n3. Click the Copilot icon in the Home ribbon to open Copilot.\n4. Click \"Create presentation from file\" or the file-reference option in Copilot.\n5. Upload Generic_Q2_Sales_Pipeline.docx from CopilotDemoFiles when prompted.\n6. In the Copilot prompt field, type and SUBMIT:\n   \"Create a 6-slide board deck from this document: 1) Executive Summary with total pipeline, 2) Top opportunities table (top 3 deals), 3) Risk analysis — highest-risk deal gets its own slide, 4) Q3 targets and what we need to close, 5) Recommended actions for the board, 6) Appendix with full pipeline table. Professional tone. No fluff.\"\n7. Wait for all 6 slides to be generated (may take 30-60 seconds)\n8. Click to slide 1 (title slide) so it is visible\n9. Leave PowerPoint open on slide 1\n\nHANDOFF POINT: 6-slide board deck generated. Presenter shows slides to audience, then demonstrates adding a GPT-Image to the title slide as the next live step.",
+        "handoff": "6-slide deck generated from pipeline doc — presenter on slide 1",
+        "prerun_time_sec": 75
       }
     },
     {
