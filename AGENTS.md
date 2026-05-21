@@ -186,3 +186,112 @@ Short: **Contoso Manufacturing** = primary customer, **Fabrikam AG** = new custo
 # Manual deploy from workspace
 bin/deploy-to-azure projects/copilot-demo/index.html copilot-demo/index.html
 ```
+
+---
+
+## 🎭 Demo Setup Agent (Playwright MCP + GitHub Copilot CLI)
+
+Every demo tab in `content.json` has a `playwright` block with a natural-language `setup_prompt`.
+An AI agent on the CDX VM reads this prompt and uses **Playwright MCP** to prepare the browser automatically.
+
+### Setup on Demo VM (run once)
+```powershell
+irm https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/install.ps1 | iex
+```
+Installs: Node.js · GitHub CLI · `@playwright/mcp` · `run-setup.ps1`
+
+### Run a Demo Setup
+```powershell
+cd CopilotDemoFiles
+.\run-setup.ps1 outlook        # Prepare Outlook demo
+.\run-setup.ps1 excel          # Prepare Excel demo
+.\run-setup.ps1 agentpremium   # Prepare Agent Builder Premium
+.\run-setup.ps1 --list         # Show all available setups
+```
+
+### How It Works
+```
+run-setup.ps1 <demo-id>
+  → reads playwright.setup_prompt from content.json
+  → sends to GitHub Copilot CLI (gh copilot)
+  → Copilot uses @playwright/mcp tools:
+      browser_navigate, browser_click, browser_snapshot
+  → browser ready for demo ✅
+```
+
+### MCP Config (auto-written to ~/.copilot/mcp-config.json)
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest", "--browser", "msedge", "--headed"]
+    }
+  }
+}
+```
+
+### Adding a Setup Prompt to a New Demo Tab
+In `content.json`, add a `playwright` block to any tab:
+```json
+{
+  "id": "mynewtab",
+  "playwright": {
+    "setup_prompt": "Open Edge, go to https://..., sign in as Leila, click X, maximize window. Demo is ready when Y is visible.",
+    "url": "https://...",
+    "user": "LeilaG@M365CPI98544940.onmicrosoft.com",
+    "ready_check": "Description of what ready looks like",
+    "setup_time_sec": 15
+  }
+}
+```
+
+See [PLAYWRIGHT_SETUP.md](PLAYWRIGHT_SETUP.md) for full documentation.
+
+---
+
+## 🌙 Nightly Features Update (Cron)
+
+`features.json` tracks all M365 Copilot features (GA / Preview / Frontier / Roadmap).
+It is updated every night at 02:00 UTC from official Microsoft sources.
+
+### Cron
+```
+0 2 * * *  /home/jens/.openclaw/workspace/bin/features-update.sh
+```
+
+### Data Flow
+```
+bin/features-update.sh
+  → bin/features_update.py
+      → fetch https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes
+      → fetch Tech Community Copilot Blog
+      → merge new features into features.json (deduplication by title)
+      → deploy to Azure VM
+      → git commit + push to main
+```
+
+### features.json Structure
+```json
+{
+  "meta": { "updated": "2026-05-21", "source_primary": "...", "total_features": 15 },
+  "features": [
+    {
+      "id": "f001",
+      "title": "Feature Name",
+      "app": ["Outlook"],
+      "platforms": ["Windows", "Web"],
+      "status": "GA",          ← GA | Preview | Frontier | Roadmap
+      "released": "2026-05",
+      "tier": "M365 Copilot",  ← Free | M365 Copilot | Frontier
+      "description": "What it does",
+      "demo_angle": "How to show it in a demo",
+      "source": "https://learn.microsoft.com/..."
+    }
+  ]
+}
+```
+
+### Adding/Editing Features Manually
+Edit `features.json` directly. Nightly cron only adds new entries — it never removes or overwrites existing ones.
+When adding a new feature, always include `demo_angle` so SEs know how to use it in a demo.
