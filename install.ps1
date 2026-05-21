@@ -90,42 +90,39 @@ Write-Host "  Repo: $REPO" -ForegroundColor DarkGray
 Write-Host "  Run again to update to latest version." -ForegroundColor DarkGray
 Write-Host ""
 
-# ── Install Playwright Demo Agent (optional) ────────────────────────────────
+# ── Install GitHub Copilot CLI + Playwright MCP ────────────────────────────────
 Write-Host ""
-Write-Host "  🎭 Setting up Demo Agent (Playwright)..." -ForegroundColor White
+Write-Host "  🤖 Setting up GitHub Copilot CLI + Playwright MCP..." -ForegroundColor White
 
-# Check if Node.js is installed
-$nodeInstalled = $null -ne (Get-Command node -ErrorAction SilentlyContinue)
-
-if (-not $nodeInstalled) {
-    Write-Host "  ⬇  Installing Node.js (LTS)..." -ForegroundColor Yellow
-    $nodeInstaller = "$env:TEMP\node-lts.msi"
-    Invoke-WebRequest "https://nodejs.org/dist/latest-v22.x/node-v22.13.0-x64.msi" -OutFile $nodeInstaller -UseBasicParsing
-    Start-Process msiexec -Args "/i $nodeInstaller /quiet /norestart" -Wait
-    $env:PATH += ";$env:ProgramFiles\nodejs"
-    Write-Host "  ✅ Node.js installed" -ForegroundColor Green
+# Install GitHub CLI if needed
+if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+    Write-Host "  ⬇  Installing GitHub CLI..." -ForegroundColor Yellow
+    try {
+        winget install --id GitHub.cli --silent --accept-package-agreements --accept-source-agreements 2>$null
+        Write-Host "  ✅ GitHub CLI installed" -ForegroundColor Green
+    } catch {
+        Write-Host "  ⚠️  GitHub CLI install failed (install manually: https://cli.github.com)" -ForegroundColor Yellow
+    }
 } else {
-    $nodeVer = (node --version 2>$null)
-    Write-Host "  ✅ Node.js already installed ($nodeVer)" -ForegroundColor Green
+    Write-Host "  ✅ GitHub CLI already installed" -ForegroundColor Green
 }
 
-# Copy demo-agent.js to demo files folder
-$agentSrc = "$extractedFolder\demo-agent.js"
-$agentDest = Join-Path $dest "demo-agent.js"
-if (Test-Path $agentSrc) {
-    Copy-Item $agentSrc $agentDest -Force
-}
+# Configure Playwright MCP for GitHub Copilot
+$mcpConfig = "$env:USERPROFILE\.copilot\mcp-config.json"
+$mcpDir = "$env:USERPROFILE\.copilot"
+New-Item -ItemType Directory -Path $mcpDir -Force | Out-Null
+$mcpJson = '{"mcpServers":{"playwright":{"command":"npx","args":["@playwright/mcp@latest","--browser","msedge","--headed"]}}}'
+Set-Content -Path $mcpConfig -Value $mcpJson -Encoding UTF8
+Write-Host "  ✅ Playwright MCP configured for GitHub Copilot" -ForegroundColor Green
 
-# Install Playwright in demo folder
-Write-Host "  ⬇  Installing Playwright..." -ForegroundColor Yellow
-Push-Location $dest
-& npm install playwright --prefer-offline --no-audit --no-fund 2>$null | Out-Null
-& npx playwright install chromium msedge --with-deps 2>$null | Out-Null
-Pop-Location
-Write-Host "  ✅ Playwright ready" -ForegroundColor Green
+# Copy run-setup.ps1 to demo files folder
+$setupScript = Join-Path $extractedFolder.FullName "run-setup.ps1"
+if (Test-Path $setupScript) {
+    Copy-Item $setupScript (Join-Path $dest "run-setup.ps1") -Force
+}
 
 Write-Host ""
 Write-Host "  🎭 Demo Agent ready! Usage:" -ForegroundColor Cyan
 Write-Host "     cd '$dest'" -ForegroundColor White
-Write-Host "     node demo-agent.js outlook    # Setup Outlook demo" -ForegroundColor White
-Write-Host "     node demo-agent.js --list     # Show all setups" -ForegroundColor White
+Write-Host "     .\run-setup.ps1 outlook    # Prepare Outlook demo" -ForegroundColor White
+Write-Host "     .\run-setup.ps1 --list     # Show all demos" -ForegroundColor White
