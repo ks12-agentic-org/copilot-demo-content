@@ -1,0 +1,39 @@
+ENGINEERING ONBOARDING FAQ
+Company: [Your Company]
+Last updated: May 2026
+
+Q: How do I get access to the product database?
+A: Submit a request via the IT helpdesk (helpdesk@company.com). Standard access is approved within 2 business days. For urgent access, mark your ticket "P1 - Production Impact".
+
+Q: What ERP system do we use?
+A: We use SAP S/4HANA. Access is granted by your department IT coordinator. Training videos are available on the intranet under /training/sap.
+
+Q: What is the PPAP submission process?
+A: All PPAP submissions must follow the AIAG standard (5th edition). Submissions go through the Quality Management System (QMS). Contact quality@company.com for the checklist and templates.
+
+Q: How do I report a quality defect?
+A: Use the 8D process. Templates are on SharePoint under /Quality/Templates. For urgent issues affecting production, call the Quality Hotline: ext. 1234.
+
+Q: Where are the product specifications stored?
+A: All product specs are stored on SharePoint under /Engineering/ProductSpecs. You need Engineering Read access (request via IT).
+
+Q: What are the standard working hours?
+A: Core hours are 9:00-16:00 local time. Flexible start: 7:00-10:00. Discuss your schedule with your line manager.
+
+Q: Who approves travel requests?
+A: Travel over €500 requires manager + cost center owner approval. Submit via the travel portal at travel.company.com.
+
+Q: How do I get my laptop set up for CAD software?
+A: Submit a software request via IT. Standard setup takes 3 business days. Specify: CATIA V5/V6, Siemens NX, or SolidWorks.
+
+Q: What is our change management process for product specs?
+A: All spec changes require an ECO (Engineering Change Order). Raise an ECO in the QMS, get sign-off from Engineering Lead + Quality, then update the master document on SharePoint.
+
+Q: How do I access customer portals (e.g., OEM portals)?
+A: OEM portal access (e.g., BMW Group SUPPLIER portal, Mercedes-Benz SQMS) is managed by your project lead. Request access via your project lead, who submits to IT with OEM project number.
+
+Q: What is the expense reimbursement process?
+A: Submit expenses within 30 days via the expense portal. Attach all receipts. Manager approval required for amounts over €100. Payments are made on the 15th of each month.
+
+Q: Where can I find the latest CAD standards?
+A: CAD standards are maintained by the Engineering Standards team. Access at /Engineering/Standards/CAD. For questions: cad-standards@company.com.

@@ -1,0 +1,42 @@
+PRODUCT SPECIFICATION — HYDRAULIC BRAKE SYSTEM MODULE
+Document No: ENG-SPEC-0042-Rev3
+Status: APPROVED
+Owner: Engineering Dept.
+Approved: 2026-03-14
+
+1. SCOPE
+This specification defines the requirements for the hydraulic brake system module (BSM-400 series) for passenger vehicle applications.
+
+2. APPLICABLE STANDARDS
+- ISO 26262 (Functional Safety)
+- IATF 16949 (Quality Management)
+- ECE R13 (Brake Performance)
+- SAE J1939 (CAN Interface)
+
+3. PERFORMANCE REQUIREMENTS
+3.1 Operating Pressure: 8–180 bar
+3.2 Temperature Range: -40°C to +120°C
+3.3 Service Life: 300,000 km / 15 years
+3.4 Brake response time: ≤ 100ms from signal to hydraulic actuation
+3.5 Fluid: DOT 4 and DOT 5.1 compatible
+
+4. INTERFACE REQUIREMENTS
+4.1 Electrical: 12V CAN bus (SAE J1939), 3x connectors (AMP Superseal)
+4.2 Mechanical: ISO 4038 mounting, M12 bolts, torque 45 Nm ±5%
+4.3 Hydraulic: M10x1 hydraulic fittings, max torque 25 Nm
+
+5. TESTING REQUIREMENTS
+5.1 Pressure cycling test: 5,000,000 cycles at rated pressure
+5.2 Thermal shock test: -40°C to +120°C, 500 cycles
+5.3 Vibration: per ISO 16750-3, Category D (heavy truck)
+5.4 IP Rating: IP69K
+
+6. PACKAGING & LOGISTICS
+- Single unit packaging: foam-lined cardboard box
+- Label: Part number, serial number, QR code (GS1)
+- Shelf life: 24 months from production date
+
+7. CHANGE HISTORY
+Rev1: Initial release (2024-01)
+Rev2: Updated IP rating from IP67 to IP69K (2025-06)
+Rev3: Added SAE J1939 CAN interface requirement (2026-03)

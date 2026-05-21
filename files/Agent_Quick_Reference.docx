@@ -1,0 +1,31 @@
+SUPPLIER ESCALATION — QUICK REFERENCE CARD
+Agent: Supplier Escalation Assistant
+Version: 2.0 | May 2026
+
+HOW TO USE THIS AGENT:
+1. Open Copilot Chat or Teams
+2. Select "Supplier Escalation Agent" from the agent list
+3. Describe the issue in plain language
+
+EXAMPLE INPUTS:
+- "Supplier X missed shipment for part Y, affects line Z starting Monday"
+- "Quality issue: 3.2% defect rate in last shipment from [Supplier], part [PN]"
+- "Request capacity increase from [Supplier] for Q3"
+
+WHAT THE AGENT DOES:
+- Pulls supplier contact data from SharePoint (Supplier Directory)
+- Retrieves current open NCRs for that supplier
+- Drafts an escalation email with the right tone and required fields
+- Suggests next actions based on escalation level (L1/L2/L3)
+
+ESCALATION LEVELS:
+L1 (Supplier Quality Eng.): < 5% defect rate, single shipment
+L2 (Supplier Mgmt. + Purchasing): Repeat issue, line impact <4h
+L3 (VP Operations + Legal): Line stop, recall risk, contract breach
+
+REQUIRED FIELDS IN EVERY ESCALATION:
+- Supplier name + DUNS number
+- Affected part number(s)
+- Production impact (Yes/No, line, timing)
+- Corrective action requested
+- Response deadline
