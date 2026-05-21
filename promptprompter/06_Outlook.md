@@ -19,19 +19,19 @@
 ### Outlook → Copilot sidebar → paste prompt. No file needed.
 
 ```prompt
-I've been at the Contoso Ltd. design review for 3 days. I have 60 emails waiting. Tell me: what's urgent and needs a response today, what's from Contoso Ltd. or Fabrikam AG that I should read first, is there anything about our key project specs or production quality issues at Plant B, and what can I safely ignore for now?
+I've been at the Contoso Ltd. design review for 3 days. I have 60 emails waiting. Tell me: what's urgent and needs a response today, what's from Contoso Ltd. or Fabrikam AG that I should read first, is there anything about our key project specs or production quality issues at Contoso Plant B, and what can I safely ignore for now?
 ```
 
 ## Summarize Thread + Draft Reply (0:34–0:37)
 
 ```demo
-Complex thread about a plant defect rate issue. 14 replies. Copilot reads it, catches you up, and drafts the management escalation reply.
+Complex thread about a Contoso plant defect rate issue. 14 replies. Copilot reads it, catches you up, and drafts the management escalation reply.
 ```
 
 ### Open quality issue thread → Copilot summarize → draft reply.
 
 ```prompt
-Summarize this email thread. I need to understand: what the quality issue at Plant B is exactly, what corrective actions have already been taken, and what's still open. Then draft a reply to the operations director — acknowledge the seriousness, confirm we've escalated to senior management, and request a status call tomorrow morning. Professional, direct tone. Include a proposed meeting time of 9am CET.
+Summarize this email thread. I need to understand: what the quality issue at Contoso Plant B is exactly, what corrective actions have already been taken, and what's still open. Then draft a reply to the operations director — acknowledge the seriousness, confirm we've escalated to senior management, and request a status call tomorrow morning. Professional, direct tone. Include a proposed meeting time of 9am CET.
 ```
 
 ## Draft from Scratch — RFQ Follow-Up (0:37–0:40)

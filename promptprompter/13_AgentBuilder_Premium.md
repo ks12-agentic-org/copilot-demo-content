@@ -77,7 +77,7 @@ die Live-Daten in SharePoint. Spec-Änderung gestern eingespielt? Agent weiß's 
 ### Testen: Realer Eskalations-Fall
 
 ```prompt
-I have a quality issue. Supplier Fabrikam AG, part BSM-400-R3, we're seeing 3.8% defect rate. 500 units affected. Our Plant B assembly line can keep running for 4 more hours then we stop. What should I do?
+I have a quality issue. Supplier Fabrikam AG, part BSM-400-R3, we're seeing 3.8% defect rate. 500 units affected. Our Contoso Plant B assembly line can keep running for 4 more hours then we stop. What should I do?
 ```
 
 ### Testen: Agent erkennt Eskalationslevel
