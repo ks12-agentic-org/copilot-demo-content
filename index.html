@@ -119,6 +119,37 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system,'Se
 .cl-time { font-size:10px; color:var(--muted); margin-bottom:3px; }
 .cl-text { font-size:12px; color:#c0d0e0; }
 
+
+/* FEATURE CARDS */
+.feat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(380px,1fr)); gap:12px; margin-bottom:20px; }
+@media(max-width:600px) { .feat-grid { grid-template-columns:1fr; } }
+.feat-card { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:14px 16px; display:flex; flex-direction:column; gap:8px; }
+.feat-card.ga     { border-left:3px solid var(--green); }
+.feat-card.preview { border-left:3px solid var(--yellow); }
+.feat-card.frontier { border-left:3px solid var(--purple); }
+.feat-card.roadmap { border-left:3px solid var(--muted); }
+.feat-header { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.feat-title { font-size:14px; font-weight:700; color:var(--white); flex:1; }
+.feat-badge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:12px; text-transform:uppercase; white-space:nowrap; }
+.feat-badge.ga       { background:var(--green); color:#fff; }
+.feat-badge.preview  { background:var(--yellow); color:#000; }
+.feat-badge.frontier { background:var(--purple); color:#fff; }
+.feat-badge.roadmap  { background:var(--surface); color:var(--muted); border:1px solid var(--border); }
+.feat-apps { display:flex; gap:4px; flex-wrap:wrap; }
+.feat-app { font-size:10px; font-weight:600; padding:2px 7px; border-radius:8px; background:var(--accent-soft); color:#90c8ff; }
+.feat-desc { font-size:13px; color:var(--muted); line-height:1.5; }
+.feat-demo { font-size:12px; color:#a0d0a0; background:#081408; border:1px solid #1a3a1a; border-radius:6px; padding:8px 10px; margin-top:4px; }
+.feat-demo::before { content:"💡 Demo: "; font-weight:700; }
+.feat-source { font-size:11px; color:var(--dim); margin-top:4px; }
+.feat-source a { color:var(--accent); text-decoration:none; }
+.feat-source a:hover { text-decoration:underline; }
+.feat-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.feat-filter-btn { background:var(--surface2); border:1px solid var(--border); color:var(--muted);
+  font-size:12px; font-weight:600; padding:5px 14px; border-radius:20px; cursor:pointer; font-family:inherit; transition:all .15s; }
+.feat-filter-btn:hover { border-color:var(--accent); color:var(--text); }
+.feat-filter-btn.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+.feat-meta { font-size:11px; color:var(--dim); margin-bottom:16px; }
+
 /* LOADING */
 #loading { display:flex; align-items:center; justify-content:center; height:80vh; font-size:16px; color:var(--muted); }
 
@@ -207,11 +238,13 @@ function goTab(id) {
   const btns = document.querySelectorAll('.nav-btn');
   btns.forEach(b => { if (b.onclick && b.onclick.toString().includes("'" + id + "'")) b.classList.add('on'); });
   window.scrollTo(0, 0);
+  if (id === 'features') renderFeaturesTab(document.getElementById('page-features'));
 }
 
 // ── Tab Renderers ────────────────────────────────────────────────────────────
 function renderTab(tab) {
   if (tab.id === 'overview') return renderRunOfShow(tab);
+  if (tab.id === 'features' || tab.type === 'features') { setTimeout(() => renderFeaturesTab(document.getElementById('page-features')), 0); return '<p style="color:var(--muted)">Loading...</p>'; }
   if (tab.id === 'qa') return renderQA(tab);
   if (tab.id === 'files') return renderFiles(tab);
   if (tab.type === 'steps' || tab.steps) return renderSteps(tab);
@@ -339,6 +372,83 @@ function qa(el) {
   el.classList.toggle('open');
   const ans = el.nextElementSibling;
   if (ans) ans.classList.toggle('on');
+}
+
+
+// ── Features Tab ────────────────────────────────────────────────────────────
+let featuresData = null;
+let featFilter = 'all';
+
+async function loadFeatures() {
+  if (featuresData) return featuresData;
+  try {
+    const r = await fetch('features.json?v=' + Date.now());
+    featuresData = await r.json();
+    return featuresData;
+  } catch(e) {
+    return null;
+  }
+}
+
+async function renderFeaturesTab(container) {
+  container.innerHTML = '<p style="color:var(--muted)">Loading features...</p>';
+  const data = await loadFeatures();
+  if (!data) {
+    container.innerHTML = '<div class="warn">Could not load features.json</div>';
+    return;
+  }
+  
+  const features = data.features || [];
+  const meta = data.meta || {};
+  const statuses = ['all', 'GA', 'Preview', 'Frontier', 'Roadmap'];
+  
+  let html = `<div class="feat-meta">📅 Last updated: ${esc(meta.updated || '?')} · ${features.length} features tracked · 
+    <a href="${esc(meta.source_primary || '#')}" target="_blank" style="color:var(--accent)">Source: MS Learn Release Notes</a></div>`;
+  
+  // Filter buttons
+  html += '<div class="feat-filters">';
+  statuses.forEach(s => {
+    const count = s === 'all' ? features.length : features.filter(f => f.status === s).length;
+    html += `<button class="feat-filter-btn${s === featFilter ? ' on' : ''}" onclick="setFeatFilter('${s}')">${s} (${count})</button>`;
+  });
+  html += '</div>';
+  
+  // Feature grid
+  const filtered = featFilter === 'all' ? features : features.filter(f => f.status === featFilter);
+  // Sort: GA first, then Preview, Frontier, Roadmap, newest first within each
+  const order = {GA:0, Preview:1, Frontier:2, Roadmap:3};
+  filtered.sort((a,b) => {
+    const os = (order[a.status]||9) - (order[b.status]||9);
+    if (os !== 0) return os;
+    return (b.released||'').localeCompare(a.released||'');
+  });
+  
+  html += '<div class="feat-grid">';
+  filtered.forEach(f => {
+    const badge = f.status.toLowerCase().replace(' ','');
+    const apps = (f.app||[]).join(', ');
+    html += `<div class="feat-card ${badge}">
+      <div class="feat-header">
+        <span class="feat-title">${esc(f.title)}</span>
+        <span class="feat-badge ${badge}">${esc(f.status)}</span>
+      </div>
+      <div class="feat-apps">${(f.app||[]).map(a => `<span class="feat-app">${esc(a)}</span>`).join('')}</div>
+      <div class="feat-desc">${esc(f.description||'')}</div>
+      ${f.demo_angle ? `<div class="feat-demo">${esc(f.demo_angle)}</div>` : ''}
+      <div class="feat-source">📅 ${esc(f.released||'')} · <a href="${esc(f.source||'#')}" target="_blank">Source</a></div>
+    </div>`;
+  });
+  html += '</div>';
+  
+  container.innerHTML = html;
+}
+
+function setFeatFilter(f) {
+  featFilter = f;
+  const container = document.getElementById('page-features');
+  if (container && container.classList.contains('on')) {
+    renderFeaturesTab(container);
+  }
 }
 
 // ── Boot ────────────────────────────────────────────────────────────────────

@@ -1,0 +1,191 @@
+{
+  "meta": {
+    "updated": "2026-05-21",
+    "source_primary": "https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes",
+    "source_blog": "https://techcommunity.microsoft.com/category/microsoft365copilot/blog/microsoft365copilotblog",
+    "source_roadmap": "https://www.microsoft.com/en-us/microsoft-365/roadmap?filters=Microsoft%20Copilot%20(Microsoft%20365)",
+    "note": "Updated nightly via cron. Source: MS Learn MCP + MS Release Notes + Tech Community Blog."
+  },
+  "features": [
+    {
+      "id": "f001",
+      "title": "GPT-5.5 Instant in Copilot Chat",
+      "app": ["Copilot Chat"],
+      "platforms": ["Windows", "Mac", "iOS", "Android", "Web"],
+      "status": "GA",
+      "released": "2026-05",
+      "tier": "M365 Copilot",
+      "description": "OpenAI's GPT-5.5 Instant delivers more accurate, concise responses with better performance on image analysis and STEM tasks. Available in Copilot Chat for faster everyday responses.",
+      "demo_angle": "Show model selector in Copilot Chat — switch between GPT-5.5 Instant (speed) and Thinking (depth).",
+      "source": "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/available-today-gpt-5-5-instant-in-microsoft-365-copilot/4517084"
+    },
+    {
+      "id": "f002",
+      "title": "GPT-5.5 Thinking in Copilot Chat",
+      "app": ["Copilot Chat"],
+      "platforms": ["Windows", "Mac", "iOS", "Android", "Web"],
+      "status": "GA",
+      "released": "2026-04",
+      "tier": "M365 Copilot",
+      "description": "GPT-5.5 Thinking enables deeper reasoning and complex problem-solving in Copilot Chat — multi-step planning, structured analysis, comparing strategies.",
+      "demo_angle": "Ask a complex multi-step business question. Show how Thinking model works through it step by step.",
+      "source": "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/available-today-gpt-5-5-thinking-and-chatgpt-images-2-0-in-microsoft-365-copilot/4514243"
+    },
+    {
+      "id": "f003",
+      "title": "ChatGPT Images 2.0 in PowerPoint",
+      "app": ["PowerPoint"],
+      "platforms": ["Windows", "Mac", "Web"],
+      "status": "GA",
+      "released": "2026-04",
+      "tier": "M365 Copilot",
+      "description": "Choose between GPT-Image (OpenAI) and Flux (Microsoft) models when adding AI-generated images to slides. GPT-Image delivers photorealistic results; Flux offers artistic styles.",
+      "demo_angle": "Create a presentation → Add image to title slide → Show model picker (GPT-Image vs Flux). Huge wow moment.",
+      "source": "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/available-today-gpt-5-5-thinking-and-chatgpt-images-2-0-in-microsoft-365-copilot/4514243"
+    },
+    {
+      "id": "f004",
+      "title": "Implicit Grounding in Outlook (Copilot Chat)",
+      "app": ["Outlook", "Copilot Chat"],
+      "platforms": ["Windows", "Web"],
+      "status": "GA",
+      "released": "2026-05",
+      "tier": "M365 Copilot",
+      "description": "Select an email or highlight text in Outlook and add it directly to your Copilot Chat prompt. Reduces manual copy-paste and gives Copilot the right context instantly.",
+      "demo_angle": "Open an email thread in Outlook, select it, ask Copilot Chat to summarize + draft reply — all without switching apps.",
+      "source": "https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes"
+    },
+    {
+      "id": "f005",
+      "title": "Open PDFs inside Copilot Chat",
+      "app": ["Copilot Chat"],
+      "platforms": ["Windows", "Mac", "Web"],
+      "status": "GA",
+      "released": "2026-05",
+      "tier": "M365 Copilot",
+      "description": "PDFs now open directly inside Copilot Chat — no separate viewer or browser tab. Ask Copilot to summarize, extract action items, or compare sections without switching context.",
+      "demo_angle": "Click a PDF attachment in Copilot Chat. Ask 'summarize this and list action items'. Show the inline view.",
+      "source": "https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes"
+    },
+    {
+      "id": "f006",
+      "title": "Copilot in Excel — Plan Mode",
+      "app": ["Excel"],
+      "platforms": ["Windows", "Mac", "Web"],
+      "status": "GA",
+      "released": "2026-05",
+      "tier": "M365 Copilot",
+      "description": "Plan Mode shows you exactly what Copilot intends to do before making any changes to your spreadsheet. Review the plan, adjust if needed, then confirm. Complete transparency before action.",
+      "demo_angle": "Open KPI spreadsheet. Ask Copilot with Plan mode: 'highlight underperforming plants and add summary row'. Show plan review before confirming.",
+      "source": "https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes"
+    },
+    {
+      "id": "f007",
+      "title": "Web Grounding in PowerPoint — URL as Slide Source",
+      "app": ["PowerPoint"],
+      "platforms": ["Windows", "Mac", "Web"],
+      "status": "GA",
+      "released": "2026-04",
+      "tier": "M365 Copilot",
+      "description": "Paste a public URL as a source when creating slides. Copilot uses live web content to ground slide content — not just training data. Great for market context or competitor slides.",
+      "demo_angle": "In PowerPoint Copilot, add a slide → paste an industry URL → Copilot grounds the content on that page.",
+      "source": "https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes"
+    },
+    {
+      "id": "f008",
+      "title": "Copilot in Word — Claude (Anthropic) as Model Option",
+      "app": ["Word"],
+      "platforms": ["Windows", "Mac", "Web"],
+      "status": "GA",
+      "released": "2026-04",
+      "tier": "M365 Copilot",
+      "description": "Choose Anthropic Claude as the AI model for drafting and editing in Word. Better for long-form writing, technical specifications, and documents requiring precise language.",
+      "demo_angle": "In Word Copilot, show the model picker. Select Claude for a technical spec document. Compare output quality.",
+      "source": "https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes"
+    },
+    {
+      "id": "f009",
+      "title": "Legal Agent in Word (Frontier)",
+      "app": ["Word"],
+      "platforms": ["Windows", "Web"],
+      "status": "Frontier",
+      "released": "2026-04",
+      "tier": "Frontier",
+      "description": "The Legal Agent in Word helps legal teams review, analyze, and summarize contracts and legal documents. Part of the new agentic Word capabilities.",
+      "demo_angle": "Only available in Frontier. Mention as future preview for customers on M365 Copilot.",
+      "source": "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/word-legal-agent-in-frontier/4516218"
+    },
+    {
+      "id": "f010",
+      "title": "Copilot in OneNote — Understands Images & Tables",
+      "app": ["OneNote"],
+      "platforms": ["Windows", "Mac", "Web"],
+      "status": "GA",
+      "released": "2026-04",
+      "tier": "M365 Copilot",
+      "description": "Copilot in OneNote now understands images, tables, and mixed content in notebooks — delivering richer, more accurate insights from all your note types.",
+      "demo_angle": "Open a OneNote page with mixed content (images + tables). Ask Copilot to summarize the notebook section.",
+      "source": "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/copilot-in-onenote-now-understands-more-of-your-notes/4515922"
+    },
+    {
+      "id": "f011",
+      "title": "Federated Copilot Connectors",
+      "app": ["Copilot Chat"],
+      "platforms": ["Web"],
+      "status": "GA",
+      "released": "2026-05",
+      "tier": "M365 Copilot",
+      "description": "Real-time enterprise data via partner connectors: Moody's, HubSpot, LSEG (London Stock Exchange), Notion, and more. Data streams directly into Copilot without copying to Microsoft.",
+      "demo_angle": "Show connector catalog in Admin Center. 'Your SAP data, Salesforce, Moody's — Copilot reads it all in real time.'",
+      "source": "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/federated-copilot-connectors---bringing-real-time-enterprise-data-within-microso/4515993"
+    },
+    {
+      "id": "f012",
+      "title": "Copilot Cowork — Multi-App Agentic Workflows",
+      "app": ["Teams", "Word", "Excel", "PowerPoint", "Outlook"],
+      "platforms": ["Windows", "Mac", "Web"],
+      "status": "Frontier",
+      "released": "2026-05",
+      "tier": "Frontier",
+      "description": "Cowork enables autonomous multi-step workflows across multiple M365 apps. Give Copilot a complex goal — it plans and executes across Outlook, Teams, Word, Excel automatically.",
+      "demo_angle": "Frontier only — show announcement. 'This is what Frontier unlocks: true agentic workflows across your entire M365 suite.'",
+      "source": "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/cowork-in-progress/4511672"
+    },
+    {
+      "id": "f013",
+      "title": "Agent Builder in Copilot Chat (No license required)",
+      "app": ["Copilot Chat"],
+      "platforms": ["Windows", "Web"],
+      "status": "GA",
+      "released": "2026-03",
+      "tier": "Free (Copilot Chat)",
+      "description": "Build custom agents directly in Copilot Chat without an M365 Copilot license. No PayGo required for web-search-grounded agents. PayGo unlocks file upload as knowledge source.",
+      "demo_angle": "Show Agent Builder UI in Copilot Chat. Build a web-research agent in 5 minutes. No license needed.",
+      "source": "https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder"
+    },
+    {
+      "id": "f014",
+      "title": "Deep Research Agent in Copilot Chat",
+      "app": ["Copilot Chat"],
+      "platforms": ["Windows", "Mac", "Web"],
+      "status": "GA",
+      "released": "2026-03",
+      "tier": "M365 Copilot",
+      "description": "Deep Research conducts autonomous multi-step research: searches the web AND your work data, synthesizes findings, and produces comprehensive reports with citations.",
+      "demo_angle": "Ask: 'Research EV charging standards for 800V architectures — include market leaders and technical challenges'. Show the research report with sources.",
+      "source": "https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes"
+    },
+    {
+      "id": "f015",
+      "title": "Copilot Search (Preview)",
+      "app": ["Copilot Chat"],
+      "platforms": ["Web"],
+      "status": "Preview",
+      "released": "2026-04",
+      "tier": "M365 Copilot",
+      "description": "AI-powered enterprise search that combines semantic understanding with your M365 data. Find content across SharePoint, Teams, Outlook, OneDrive in one natural language query.",
+      "demo_angle": "Ask: 'Find all documents related to our Q2 pipeline review'. Show results across all M365 sources.",
+      "source": "https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-search"
+    }
+  ]
+}

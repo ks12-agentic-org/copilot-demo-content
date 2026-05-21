@@ -57,36 +57,11 @@
       "pitch": ""
     },
     {
-      "id": "whatsnew",
+      "id": "features",
       "icon": "🆕",
-      "title": "What's New",
-      "type": "steps",
-      "steps": [
-        {
-          "title": "⚡ GPT-5.5 Instant May 2026",
-          "desc": "Faster, sharper responses across all M365 Copilot experiences. Noticeably quicker — especially on long document summarization and complex prompts."
-        },
-        {
-          "title": "🧠 Claude Model in Word April 2026",
-          "desc": "Users can now choose Claude (Anthropic) as the AI model for drafting and editing in Word. Better for long-form writing, technical specs, and documents requiring precise language — ideal for technical engineering documents."
-        },
-        {
-          "title": "📋 Plan Mode in Excel May 2026",
-          "desc": "Before changing anything, Copilot shows you a step-by-step plan of what it intends to do. Review, adjust, then confirm. Perfect for complex production KPI workbooks where accidental changes are costly."
-        },
-        {
-          "title": "🎨 Image Model Choice April 2026",
-          "desc": "Choose between GPT-Image, Flux, or Auto for slide image generation. Different models = different visual styles. GPT-Image for photorealistic, Flux for conceptual/artistic."
-        },
-        {
-          "title": "📁 Copilot in OneDrive — Richer Understanding April 2026",
-          "desc": "Ready-to-use prompts in OneDrive. Better understanding of images and tables in files. Ask questions about your documents directly from OneDrive without opening them."
-        },
-        {
-          "title": "🔍 Researcher Agent GA",
-          "desc": "Handles complex, multistep research tasks — securely synthesizes information from your work data AND the web. Creates in-depth reports on competitive landscapes, technical standards, or market trends. Research industry standards, OEM requirements, or competitor positioning in minutes."
-        }
-      ]
+      "title": "What's New & Features",
+      "type": "features",
+      "note": "Updated nightly from MS Learn & Tech Community Blog. Source of truth: features.json"
     },
     {
       "id": "workiq",
