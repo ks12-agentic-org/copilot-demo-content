@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "repo": "ks12-agentic-org/copilot-demo-content",
+    "branch": "main",
+    "folder": "promptprompter",
+    "index_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/index.json",
+    "updated": "2026-05-21",
+    "description": "Copilot Demo Playbook — PromptPrompter sync index",
+    "how_to_sync": "Fetch this file, then download each entry's raw_url. Compare sha256 to skip unchanged files."
+  },
+  "files": [
+    {
+      "filename": "01_RunOfShow.md",
+      "title": "📋 Run-of-Show",
+      "duration": "75 min total",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/01_RunOfShow.md",
+      "sha256": "c0ae4ef5679b",
+      "size_bytes": 1009,
+      "order": 1
+    },
+    {
+      "filename": "03_WhatsNew.md",
+      "title": "🆕 What's New — Copilot Features",
+      "duration": "",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/03_WhatsNew.md",
+      "sha256": "ff539362bb9f",
+      "size_bytes": 3569,
+      "order": 3
+    },
+    {
+      "filename": "04_WorkIQ.md",
+      "title": "🧠 Work IQ / Day 1",
+      "duration": "10 min",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/04_WorkIQ.md",
+      "sha256": "3e4f9eb8ee52",
+      "size_bytes": 7584,
+      "order": 4
+    },
+    {
+      "filename": "05_CopilotChat.md",
+      "title": "💬 Copilot Chat (Free with M365)",
+      "duration": "5 min",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/05_CopilotChat.md",
+      "sha256": "8b73169c0eea",
+      "size_bytes": 2983,
+      "order": 5
+    },
+    {
+      "filename": "06_Outlook.md",
+      "title": "📧 Copilot in Outlook",
+      "duration": "10 min",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/06_Outlook.md",
+      "sha256": "0a3322eac22a",
+      "size_bytes": 2423,
+      "order": 6
+    },
+    {
+      "filename": "07_Teams.md",
+      "title": "💬 Copilot in Teams",
+      "duration": "8 min",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/07_Teams.md",
+      "sha256": "6aa7eb1539c4",
+      "size_bytes": 1549,
+      "order": 7
+    },
+    {
+      "filename": "08_Word.md",
+      "title": "📝 Copilot in Word",
+      "duration": "4 min",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/08_Word.md",
+      "sha256": "5c5f0b4ce53f",
+      "size_bytes": 2849,
+      "order": 8
+    },
+    {
+      "filename": "09_Excel.md",
+      "title": "📊 Copilot in Excel",
+      "duration": "5 min",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/09_Excel.md",
+      "sha256": "84f29879456e",
+      "size_bytes": 3057,
+      "order": 9
+    },
+    {
+      "filename": "10_PowerPoint.md",
+      "title": "📊 Copilot in PowerPoint",
+      "duration": "10 min",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/10_PowerPoint.md",
+      "sha256": "608d46979166",
+      "size_bytes": 2350,
+      "order": 10
+    },
+    {
+      "filename": "11_QA.md",
+      "title": "❓ Q&A Prep",
+      "duration": "",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/11_QA.md",
+      "sha256": "f79192cbebd1",
+      "size_bytes": 3842,
+      "order": 11
+    },
+    {
+      "filename": "12_AgentBuilder_Basic.md",
+      "title": "🤖 Agent Builder — Basic (ohne PayGo)",
+      "duration": "6 min",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/12_AgentBuilder_Basic.md",
+      "sha256": "c4e08f323a45",
+      "size_bytes": 3503,
+      "order": 12
+    },
+    {
+      "filename": "13_AgentBuilder_Premium.md",
+      "title": "🚀 Agent Builder — Premium (M365 Copilot)",
+      "duration": "12 min",
+      "raw_url": "https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/promptprompter/13_AgentBuilder_Premium.md",
+      "sha256": "bae03648a776",
+      "size_bytes": 4714,
+      "order": 13
+    }
+  ],
+  "total": 12
+}
