@@ -144,6 +144,12 @@ bin/deploy-to-azure projects/leoni-copilot-demo/index.html leoni-copilot-demo/in
 
 ---
 
+## Demo Companies
+Siehe [DEMO_COMPANIES.md](DEMO_COMPANIES.md) für vollständige Profile aller MS Fictitious Companies.
+Kurz: Contoso Manufacturing = primärer Kunde, Fabrikam AG = Neukunde, Northwind = bestehend, Tailwind = Lieferant.
+
+---
+
 ## CDX Demo Tenant
 
 **Tenant:** m365cpi98544940.onmicrosoft.com
