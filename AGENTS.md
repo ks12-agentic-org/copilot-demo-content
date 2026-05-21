@@ -1,152 +1,79 @@
 # AGENTS.md — Copilot Demo Content Repo
 
 **Repo:** `ks12-agentic-org/copilot-demo-content`
-**Live Dashboard:** https://agent-ui.jens-lab.com/projects/leoni-copilot-demo/
+**Live Dashboard:** https://agent-ui.jens-lab.com/projects/copilot-demo/
 **Owner:** Jens Schneider (jens.schneider@bluepolicy.de)
 
 ---
 
-## Was ist dieses Repo?
+## ⚠️ THREE NON-NEGOTIABLE RULES
 
-Dieses Repo enthält alle Inhalte für Microsoft Copilot Demos:
+### 1. 🌐 ALWAYS ENGLISH — NO EXCEPTIONS
+Every prompt, demo instruction, file content, and UI text must be in **English only**.
+No German. No bilingual. No `<span class="de">`. English everywhere, always.
+
+### 2. 🏢 ALWAYS NEUTRAL — NO CUSTOMER NAMES
+Use **only official Microsoft Fictitious Companies** (see [DEMO_COMPANIES.md](DEMO_COMPANIES.md)).
+- ✅ Contoso Manufacturing, Fabrikam AG, Northwind Industries, Tailwind Traders
+- ❌ LEONI, BMW, Volkswagen, real company names of any kind
+- ❌ Real locations, real people, real products that identify a customer
+
+### 3. 🔍 MICROSOFT LEARN MCP IS YOUR FIRST SOURCE
+Before writing **any** Copilot feature description, availability, or licensing claim:
+**Search Microsoft Learn via MCP first.** No guessing. No training data.
+
+MCP server: `microsoft-learn` → `https://learn.microsoft.com/api/mcp`
+Tools: `microsoft_docs_search`, `microsoft_docs_fetch`, `microsoft_code_sample_search`
+
+Example: Before writing "Copilot in Outlook can do X" → search `microsoft_docs_search("Copilot Outlook features 2026")`.
+
+---
+
+## Repo Structure
 
 ```
-promptprompter/   → PromptPrompter App MDs (ein File pro Demo-Tab, nummeriert)
-files/            → Demo-Dateien (DOCX, XLSX — neutrale Beispiel-Inhalte)
-dashboard/        → HTML Dashboard (deployed auf Azure VM)
-.github/workflows → CI/CD: Push → Azure VM Deploy
+promptprompter/   → PromptPrompter MDs (01–13, numbered, English only)
+files/            → Demo documents (DOCX, XLSX — Contoso/Fabrikam/Northwind names only)
+dashboard/        → HTML Dashboard → deployed to Azure VM
+DEMO_COMPANIES.md → Full reference for all MS fictitious companies
+install.ps1       → One-liner setup for CDX Demo VMs
+.github/          → CI/CD workflows
 ```
 
 ---
 
-## Regeln für Agents (PFLICHT lesen!)
+## Content Rules
 
-### 1. ALLES muss 100% neutral sein
-- **Keine Kundennamen** in Prompts, Dokumenten, oder Demo-Skripten
-- **Keine echten Firmennamen** außer generischen Platzhaltern: `Contoso Ltd.`, `Fabrikam AG`, `Northwind Corp.`, `Alpine Systems`
-- **Keine Branchen-Spezifika** die einen Kunden identifizieren könnten
-- Einzige Ausnahme: `promptprompter/02_LEONIContext__Leoni.md` → darf LEONI-spezifisch bleiben (Tab wird pro Kunde ausgetauscht)
-
-### 2. Dateinamen-Konvention
+### Naming Convention
 ```
-promptprompter/  → NN_TabName__[Kunde].md   (z.B. 06_Outlook__Leoni.md)
-files/           → Generic_[Beschreibung].docx / .xlsx
-                   Engineering_[Beschreibung].docx für Engineering-spezifische Docs
+promptprompter/  → NN_TabName.md   (e.g. 06_Outlook.md)
+files/           → Generic_[Description].docx / .xlsx
+                   Or: Contoso_[Description].docx, Fabrikam_[Description].docx
 ```
 
-### 3. PromptPrompter MD Format
+### PromptPrompter MD Format
 ```markdown
 # 📧 Tab Title
 
-> ⏱ X min — optional Hinweis
+> ⏱ X min
 
-```demo
-Presenter-Instruktion (wird angezeigt, nicht kopiert)
+` ``demo
+Presenter instruction (displayed, not copied)
+` ``
+
+## Step Title
+
+` ``prompt
+The actual prompt — copied on click
+` ``
 ```
 
-## Schritt-Titel (Zeitstempel optional)
-
-```demo
-Setup-Anweisung, was der Presenter tun soll
-```
-
-### Hint (optional — erscheint als Schritt-Label)
-
-```prompt
-Der eigentliche Prompt — wird per Klick kopiert
-```
-```
-
-### 4. Demo-File Qualitäts-Check
-Vor jedem Commit prüfen:
-- Keine echten Kundennamen im Dokument-Inhalt
-- Keine internen Preise, vertragliche Details, echte Personen
-- Fiktive Firmen: Contoso, Fabrikam, Northwind, Alpine Systems, Global Tech GmbH
-
-### 5. Commit & Push Workflow
-```bash
-cd /tmp/copilot-demo-content
-git add -A
-git commit -m "feat: [was geändert] — [Grund]"
-git push origin main
-```
-→ GitHub Action deployed automatisch zu Azure VM
-→ PromptPrompter ZIP wird automatisch neu gebaut
-
-### 6. Neue Demo-Tab hinzufügen
-1. Neue MD-Datei anlegen: `promptprompter/NN_TabName__[Kunde].md`
-2. Nächste Nummer in der Sequenz verwenden
-3. Bei neuem Demo-File: `files/Generic_[Name].docx` oder `.xlsx`
-4. `README.md` → Tabelle "Demo-Tabs" aktualisieren
-
----
-
-## Aktueller Stand — Demo-Tabs (Leoni)
-
-| Nr | Datei | Inhalt | Duration |
-|---|---|---|---|
-| 01 | RunOfShow | 75-Min Timeline + Intro-Pitch | — |
-| 02 | LEONIContext | Firmenprofil, Personas, Talking Points | — |
-| 03 | WhatsNew | Neue Copilot Features (April 2026) | — |
-| 04 | WorkIQ | Day-1-Demo: Inbox, Kalender, Cross-App | 10 min |
-| 05 | CopilotChat | Free-Tier Demo (kein M365 Copilot) | 5 min |
-| 06 | Outlook | Inbox Triage, Thread Summary, Draft | 10 min |
-| 07 | Teams | Meeting Recap, Q&A aus Transkript | 8 min |
-| 08 | Word | Meeting Notes → Report, Rewrite | 4 min |
-| 09 | Excel | KPI Plan Mode, Pipeline-Analyse | 5 min |
-| 10 | PowerPoint | Create from Doc, GPT-Image, Web | 10 min |
-| 11 | QA | 7 häufige Fragen + Antworten | — |
-| 12 | AgentBuilder_Basic | Ohne PayGo: nur Web Search | 6 min |
-| 13 | AgentBuilder_Premium | M365 Copilot: File Upload + SharePoint | 12 min |
-
----
-
-## Demo-Files
-
-| File | Wofür |
-|---|---|
-| `Generic_Q2_Sales_Pipeline.docx` | Chat + PPT Demo |
-| `Generic_Engineering_Meeting_Notes.docx` | allgemein |
-| `Generic_RFQ_Response.docx` | Outlook Demo 3 |
-| `Generic_Weekly_Operations_Status.docx` | Excel Demo |
-| `Generic_EV_Component_Comparison.docx` | PPT/Chat |
-| `Generic_Product_Brief.docx` | PPT Demo 1 + Word Demo 2 |
-| `Generic_Meeting_Notes.docx` | Word Demo (Copilot Chat) |
-| `Contoso_Account_Brief.docx` | Work IQ Demo |
-| `Fabrikam_Weekly_Status.docx` | Work IQ Demo |
-| `Engineering_Meeting_Notes_Raw.docx` | Word Demo 1 (chaotische Notizen) |
-| `Engineering_Onboarding_FAQ.docx` | Agent Builder Premium Demo |
-| `Agent_Quick_Reference.docx` | Agent Builder Referenz |
-| `Product_Spec_BSM400.docx` | technische Spec Demo |
-| `Generic_Plant_KPI_Data.xlsx` | Excel Demo 1 |
-| `Generic_Q2_Pipeline_Tracker.xlsx` | Excel Demo 2 |
-
----
-
-## Deployment
-
-### Azure VM (manuell)
-```bash
-bin/deploy-to-azure projects/leoni-copilot-demo/index.html leoni-copilot-demo/index.html
-```
-
-### GitHub Action (automatisch bei Push)
-→ Siehe `.github/workflows/deploy.yml`
-
----
-
-## Cron-Job (läuft alle 15 Min)
-`/home/jens/.openclaw/workspace/bin/demo-refresh.sh`
-- Prüft auf neue Copilot-Features
-- Verbessert Dashboard-Qualität
-- Deployed zu Azure VM
-- Schreibt Log: `/tmp/demo-refresh.log`
-
----
-
-## Demo Companies
-Siehe [DEMO_COMPANIES.md](DEMO_COMPANIES.md) für vollständige Profile aller MS Fictitious Companies.
-Kurz: Contoso Manufacturing = primärer Kunde, Fabrikam AG = Neukunde, Northwind = bestehend, Tailwind = Lieferant.
+### Demo File Quality Check
+Before every commit, verify:
+- English only in all file content
+- Only Contoso / Fabrikam / Northwind / Tailwind / Woodgrove as company names
+- No real prices, contracts, personal data
+- No customer-identifiable information
 
 ---
 
@@ -154,30 +81,62 @@ Kurz: Contoso Manufacturing = primärer Kunde, Fabrikam AG = Neukunde, Northwind
 
 **Tenant:** m365cpi98544940.onmicrosoft.com
 
-| User | UPN | VM | IP | Copilot | Rolle |
+| User | UPN | VM | IP | Copilot | Role |
 |---|---|---|---|---|---|
 | MOD Administrator | admin@M365CPI98544940.onmicrosoft.com | TC-Admin | 10.1.1.10 | ✓ | Admin |
-| **Leila Goncalves** | LeilaG@M365CPI98544940.onmicrosoft.com | TC-Leila | 10.1.1.19 | ✓ | **Primärer Demo-User** |
-| Preston Morales | PrestonM@M365CPI98544940.onmicrosoft.com | TC-Preston | 10.1.1.20 | ✓ | Demo-User |
-| Selma Nyberg | SelmaN@M365CPI98544940.onmicrosoft.com | TC-Selma | 10.1.1.18 | ✗ | Chat only (Vorher/Nachher) |
-| Jens | jens@M365CPI98544940.onmicrosoft.com | TC-Jens | 10.1.1.11 | ✗ | ⚠️ NICHT für Demo! |
+| **Leila Goncalves** | LeilaG@M365CPI98544940.onmicrosoft.com | TC-Leila | 10.1.1.19 | ✓ | **Primary Demo User** |
+| Preston Morales | PrestonM@M365CPI98544940.onmicrosoft.com | TC-Preston | 10.1.1.20 | ✓ | Demo User |
+| Selma Nyberg | SelmaN@M365CPI98544940.onmicrosoft.com | TC-Selma | 10.1.1.18 | ✗ | Chat only (before/after) |
+| Jens | jens@M365CPI98544940.onmicrosoft.com | TC-Jens | 10.1.1.11 | ✗ | ⚠️ NOT for demo! |
 
-**Lizenzen:** Leila + Preston + Admin = M365 E5 + Copilot. Selma = kein Copilot.
+**Licenses:** Leila + Preston + Admin = M365 E5 + Copilot. Selma = no Copilot.
 
 ---
 
-## Demo Files auf VMs installieren
+## Install Demo Files on VMs
 
-### One-Liner (PowerShell, auf jeder Demo-VM ausführen):
-
+### One-liner (PowerShell — run on any CDX VM):
 ```powershell
 irm https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/install.ps1 | iex
 ```
+→ Installs to OneDrive (or Desktop), creates shortcut, always pulls latest from main.
 
-**Was das Script macht:**
-- Lädt alle Demo-Files aus GitHub (immer aktuelle Version)
-- Installiert nach OneDrive (wenn vorhanden) oder Desktop
-- Erstellt Desktop-Shortcut "Copilot Demo Files"
-- Kopiert auch PromptPrompter MDs in Unterordner
+---
 
-**Empfohlene Demo-VM:** TC-Leila (LeilaG, hat Copilot-Lizenz)
+## Demo Companies
+See [DEMO_COMPANIES.md](DEMO_COMPANIES.md) for full profiles.
+Short: **Contoso Manufacturing** = primary customer, **Fabrikam AG** = new customer/RFQ, **Northwind** = existing account, **Tailwind** = supplier.
+
+---
+
+## Current Demo Tabs
+
+| # | File | Content | Duration |
+|---|---|---|---|
+| 01 | RunOfShow.md | 75-min timeline + intro pitch | — |
+| 03 | WhatsNew.md | New Copilot features | — |
+| 04 | WorkIQ.md | Day-1 demo: inbox, calendar, cross-app | 10 min |
+| 05 | CopilotChat.md | Free-tier demo (no M365 Copilot) | 5 min |
+| 06 | Outlook.md | Inbox triage, thread summary, draft | 10 min |
+| 07 | Teams.md | Meeting recap, Q&A from transcript | 8 min |
+| 08 | Word.md | Meeting notes → report, rewrite | 4 min |
+| 09 | Excel.md | KPI Plan Mode, pipeline analysis | 5 min |
+| 10 | PowerPoint.md | Create from doc, GPT-Image, web | 10 min |
+| 11 | QA.md | 7 common questions + answers | — |
+| 12 | AgentBuilder_Basic.md | No PayGo: web search only | 6 min |
+| 13 | AgentBuilder_Premium.md | M365 Copilot: file upload + SharePoint | 12 min |
+
+---
+
+## Cron Job (runs every 15 min)
+`/home/jens/.openclaw/workspace/bin/demo-refresh.sh`
+- Checks for new Copilot features via **Microsoft Learn MCP**
+- Improves dashboard quality
+- Deploys to Azure VM
+- Log: `/tmp/demo-refresh.log`
+
+## Deployment
+```bash
+# Manual deploy from workspace
+bin/deploy-to-azure projects/copilot-demo/index.html copilot-demo/index.html
+```
