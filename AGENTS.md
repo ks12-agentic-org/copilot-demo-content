@@ -141,3 +141,37 @@ bin/deploy-to-azure projects/leoni-copilot-demo/index.html leoni-copilot-demo/in
 - Verbessert Dashboard-Qualität
 - Deployed zu Azure VM
 - Schreibt Log: `/tmp/demo-refresh.log`
+
+---
+
+## CDX Demo Tenant
+
+**Tenant:** m365cpi98544940.onmicrosoft.com
+
+| User | UPN | VM | IP | Copilot | Rolle |
+|---|---|---|---|---|---|
+| MOD Administrator | admin@M365CPI98544940.onmicrosoft.com | TC-Admin | 10.1.1.10 | ✓ | Admin |
+| **Leila Goncalves** | LeilaG@M365CPI98544940.onmicrosoft.com | TC-Leila | 10.1.1.19 | ✓ | **Primärer Demo-User** |
+| Preston Morales | PrestonM@M365CPI98544940.onmicrosoft.com | TC-Preston | 10.1.1.20 | ✓ | Demo-User |
+| Selma Nyberg | SelmaN@M365CPI98544940.onmicrosoft.com | TC-Selma | 10.1.1.18 | ✗ | Chat only (Vorher/Nachher) |
+| Jens | jens@M365CPI98544940.onmicrosoft.com | TC-Jens | 10.1.1.11 | ✗ | ⚠️ NICHT für Demo! |
+
+**Lizenzen:** Leila + Preston + Admin = M365 E5 + Copilot. Selma = kein Copilot.
+
+---
+
+## Demo Files auf VMs installieren
+
+### One-Liner (PowerShell, auf jeder Demo-VM ausführen):
+
+```powershell
+irm https://raw.githubusercontent.com/ks12-agentic-org/copilot-demo-content/main/install.ps1 | iex
+```
+
+**Was das Script macht:**
+- Lädt alle Demo-Files aus GitHub (immer aktuelle Version)
+- Installiert nach OneDrive (wenn vorhanden) oder Desktop
+- Erstellt Desktop-Shortcut "Copilot Demo Files"
+- Kopiert auch PromptPrompter MDs in Unterordner
+
+**Empfohlene Demo-VM:** TC-Leila (LeilaG, hat Copilot-Lizenz)
