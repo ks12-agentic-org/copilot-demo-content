@@ -1,52 +1,73 @@
-# 🔌 LEONI Context
+# 🔌 Customer Context — [KUNDE HIER EINTRAGEN]
 
-> Background info for presenter — no prompts, just context
+> Background info für den Presenter — vor der Demo ausfüllen
+
+```demo
+⚠️ SETUP: Diesen Tab VOR der Demo mit Kunden-Informationen befüllen.
+Felder mit [PLATZHALTER] ersetzen — dann ist die Demo 100% personalisiert.
+```
 
 ## Company Facts
 
 ```demo
-Full NameVollständiger Name: LEONI AG
-HQ: Nuremberg, Germany
-FoundedGegründet: years
-EmployeesMitarbeiter: worldwide
-RevenueUmsatz: ~€5.5B (2025)
-BusinessGeschäftsfeld: Wiring systems & cables for automotive
-Key CustomersSchlüsselkunden: BMW, Mercedes-Benz, Volkswagen Group, Audi, Stellantis
-Website: leoni.com
-Wiring SystemsKabelsysteme: Complete vehicle electrical harnesses — cockpit, powertrain, chassis wiring. LEONI's largest segment.
-Cable & Connection TechnologyKabel- & Verbindungstechnologie: High-voltage cables for BEV platforms, data cables, industrial cables.
-EV / High Voltage: 800V architecture support, battery management system cables, fast-charge infrastructure components.
-Global ManufacturingGlobale Fertigung: Plants in Romania, Serbia, Slovakia, Morocco, Tunisia, Germany. Near-shoring for EU OEMs.
+[AUSFÜLLEN VOR DEMO]
+
+Full Name: [Customer Full Name]
+HQ: [City, Country]
+Employees: [~X,000]
+Revenue: ~€[X]B (2025)
+Industry: [Industry]
+Business: [Core business description]
+Key Customers: [OEM 1], [OEM 2], [OEM 3]
+Website: [customer-website.com]
 ```
 
 ## Demo Personas
 
 ```demo
-👤 ⚙️ Lead Engineer — Wiring SystemsLead Engineer – Kabelsysteme: Manages BMW and Mercedes wiring harness projects. Writes specs, leads DV tests, coordinates with OEM R&D. 60+ emails/day. Pain: status updates, spec docs, meeting follow-ups.
-```
+👤 Persona 1 — [Role, z.B. "Senior Project Engineer"]
+[Beschreibung: Was macht diese Person? Pain Points? Wie viele E-Mails/Tag?]
+Pain: [Hauptproblem]
 
-```demo
-👤 📊 Key Account ManagerKey Account Manager: Manages Volkswagen and Voltaix AG accounts. Creates proposals, RFQ responses, executive summaries. Needs to move fast on complex pricing decisions. Pain: proposal creation, document-heavy workflows.
-```
+👤 Persona 2 — [Role, z.B. "Key Account Manager"]
+[Beschreibung]
+Pain: [Hauptproblem]
 
-```demo
-👤 🏭 Operations Manager — PlantOperations Manager – Werk: Manages daily production at Timisoara. KPI reports, defect analysis, supplier escalations. 80+ emails, shift handover notes, quality alerts. Pain: inbox management + report writing.
-```
-
-```demo
-👤 🎯 Project Manager — EV ProgramsProjektleiter – EV-Programme: Coordinates cross-functional teams across 4 countries for new EV platform launches. Status meetings, risk reports, OEM milestone tracking. Pain: cross-team visibility, status aggregation.
+👤 Persona 3 — [Role, z.B. "Operations Manager"]
+[Beschreibung]
+Pain: [Hauptproblem]
 ```
 
 ## Key Talking Points
 
 ```demo
-ℹ️ Engineering = document-intensive:
+ℹ️ [BRANCHENSPEZIFISCHES ARGUMENT]:
+[Warum Copilot für diese Branche/dieses Unternehmen besonders relevant ist]
+
+💡 [TECHNISCHE FRAGE die kommen wird]:
+[z.B. SAP-Integration, Datensicherheit, bestehende Tools]
+Antwort: [Kurze, klare Antwort]
+
+⚠️ [KONTEXT/TRANSFORMATION]:
+[Strategische Situation des Kunden — was ändert sich gerade?]
+Copilot-Angle: [Wie hilft Copilot konkret in dieser Situation]
 ```
 
-```demo
-💡 SAP question will come up:
-```
+## License Situation
 
 ```demo
-⚠️ EV transition context:
+[AUSFÜLLEN VOR DEMO]
+
+Aktuelle Lizenz: [M365 E3 / E5 / Business Premium / ...]
+Copilot Lizenz: [Ja / Nein / Pilot mit X Usern]
+Demo-Tenant: [CDX / eigener Tenant / ...]
+Frontier: [Ja / Nein]
+
+Wichtig für die Demo: [Besonderheiten die du beachten musst]
+```
+
+## Intro Pitch (anpassen!)
+
+```prompt
+"[Customer] has [X,000] people. Every one of them uses Outlook, Teams, Word. This is what Copilot can do for each of them — starting today."
 ```
